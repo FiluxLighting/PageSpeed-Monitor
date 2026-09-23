@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PageSpeed Monitor — Filux</title>
+<meta name="description" content="Monitorización periódica de Core Web Vitals, rendimiento y oportunidades de mejora para Filux">
+<style>
+  :root {
+    --bg: #0f172a;
+    --surface: #1e293b;
+    --surface2: #263247;
+    --border: #334155;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --accent: #818cf8;
+    --green: #0cce6b;
+    --yellow: #ffa400;
+    --red: #ff4e42;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* Layout */
+  .container { max-width: 1300px; margin: 0 auto; padding: 0 1.5rem; }
+  header { background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%); border-bottom: 1px solid var(--border); padding: 2rem 0; }
+  header .container { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+  header h1 { font-size: 1.8rem; font-weight: 700; background: linear-gradient(90deg, #a78bfa, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  header .meta { color: var(--muted); font-size: 0.9rem; margin-left: auto; text-align: right; }
+
+  /* Stats */
+  .stats-bar { display: flex; gap: 1rem; padding: 1.5rem 0; flex-wrap: wrap; }
+  .stat-card { flex: 1; min-width: 130px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; }
+  .stat-card .value { font-size: 2rem; font-weight: 700; color: var(--accent); }
+  .stat-card .label { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+
+  /* Section */
+  section { padding: 2rem 0; }
+  section h2 { font-size: 1.3rem; font-weight: 600; margin-bottom: 1.25rem; color: var(--text); display: flex; align-items: center; gap: 0.5rem; }
+
+  /* Table */
+  .table-wrapper { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th { background: var(--surface2); color: var(--muted); font-weight: 500; text-align: left; padding: 0.75rem 1rem; white-space: nowrap; }
+  td { padding: 0.75rem 1rem; border-top: 1px solid var(--border); vertical-align: middle; }
+  tr:hover td { background: var(--surface2); }
+  .url-cell { color: var(--muted); font-size: 0.8rem; }
+  .ts-cell { color: var(--muted); font-size: 0.82rem; white-space: nowrap; }
+
+  /* Badges */
+  .score-badge { display: inline-block; padding: 0.25rem 0.65rem; border-radius: 99px; color: #0f172a; font-weight: 700; font-size: 0.95rem; min-width: 42px; text-align: center; }
+  .badge { display: inline-block; padding: 0.2rem 0.55rem; border-radius: 6px; font-size: 0.78rem; font-weight: 600; }
+  .badge-mobile { background: #3730a333; color: #a78bfa; border: 1px solid #a78bfa44; }
+  .badge-desktop { background: #06643033; color: #34d399; border: 1px solid #34d39944; }
+  .badge-warning { background: #ffa40022; color: #ffa400; border: 1px solid #ffa40044; }
+  .badge-success { background: #0cce6b22; color: #0cce6b; border: 1px solid #0cce6b44; }
+
+  /* Oportunidades & Diagnósticos */
+  .opps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 1.25rem; }
+  .opp-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; }
+  .opp-card-header { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+  .opp-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .opp-item { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 0.75rem; }
+  .opp-item-header { display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem; margin-bottom: 0.25rem; }
+  .opp-title { font-weight: 600; font-size: 0.88rem; color: #f8fafc; }
+  .opp-savings { font-size: 0.78rem; font-weight: 600; background: #ffa40026; color: #ffa400; padding: 0.15rem 0.45rem; border-radius: 4px; white-space: nowrap; }
+  .opp-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.4; }
+
+  /* Charts */
+  .charts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(480px, 1fr)); gap: 1.25rem; }
+  .chart-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
+  .chart-card h3 { font-size: 0.95rem; color: var(--text); margin-bottom: 1rem; }
+  .chart-card h3 small { color: var(--muted); font-weight: 400; }
+
+  /* Legend */
+  .legend-bar { display: flex; gap: 1.5rem; margin-bottom: 1rem; font-size: 0.82rem; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 0.4rem; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+
+  /* Footer */
+  footer { border-top: 1px solid var(--border); padding: 1.5rem 0; text-align: center; color: var(--muted); font-size: 0.82rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div>
+      <h1>⚡ PageSpeed Monitor — Filux</h1>
+      <p style="color:var(--muted);font-size:0.9rem;margin-top:0.25rem">Monitorización de Core Web Vitals, comparativas y oportunidades de mejora</p>
+    </div>
+    <div class="meta">
+      Generado el <strong>2026-09-23 14:04 UTC</strong><br>
+      Fuente: <a href="https://developers.google.com/speed/docs/insights/v5/about" target="_blank">PageSpeed Insights API v5</a>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Stats bar -->
+  <div class="stats-bar">
+    <div class="stat-card">
+      <div class="value">6</div>
+      <div class="label">URLs monitorizadas</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">2</div>
+      <div class="label">Estrategias (Mobile / Desktop)</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">1</div>
+      <div class="label">Ejecuciones registradas</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">12</div>
+      <div class="label">Mediciones totales</div>
+    </div>
+  </div>
+
+  <!-- Resumen actual -->
+  <section>
+    <h2>📋 Última medición y estado</h2>
+    <div class="legend-bar">
+      <div class="legend-item"><div class="dot" style="background:#0cce6b"></div> Bueno (≥90 / LCP ≤2.5s / CLS ≤0.1)</div>
+      <div class="legend-item"><div class="dot" style="background:#ffa400"></div> Necesita mejora</div>
+      <div class="legend-item"><div class="dot" style="background:#ff4e42"></div> Malo</div>
+    </div>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Página</th>
+            <th>Dispositivo</th>
+            <th>Score</th>
+            <th>LCP</th>
+            <th>CLS</th>
+            <th>FCP</th>
+            <th>TBT</th>
+            <th>Mejoras</th>
+            <th>Medido</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              <td><strong>Portada (Home)</strong><br><small class="url-cell"><a href="https://filux.com/es/" target="_blank">https://filux.com/es/</a></small></td>
+              <td><span class="badge badge-mobile">📱 Mobile</span></td>
+              <td><span class="score-badge" style="background:#888"></span> </td>
+              <td style="color:#888">— </td>
+              <td style="color:#888"> </td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="badge badge-success">✨ Óptimo</span></td>
+              <td class="ts-cell">2026-09-23 14:02</td>
+            </tr>
+            <tr>
+              <td><strong>Portada (Home)</strong><br><small class="url-cell"><a href="https://filux.com/es/" target="_blank">https://filux.com/es/</a></small></td>
+              <td><span class="badge badge-desktop">🖥 Desktop</span></td>
+              <td><span class="score-badge" style="background:#888"></span> </td>
+              <td style="color:#888">— </td>
+              <td style="color:#888"> </td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="badge badge-success">✨ Óptimo</span></td>
+              <td class="ts-cell">2026-09-23 14:02</td>
+            </tr>
+            <tr>
+              <td><strong>Catálogo - Campanas Industriales</strong><br><small class="url-cell"><a href="https://filux.com/es/campanas-industriales-led-173" target="_blank">https://filux.com/es/campanas-industriales-led-173</a></small></td>
+              <td><span class="badge badge-mobile">📱 Mobile</span></td>
+              <td><span class="score-badge" style="background:#888"></span> </td>
+              <td style="color:#888">— </td>
+              <td style="color:#888"> </td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="badge badge-success">✨ Óptimo</span></td>
+              <td class="ts-cell">2026-09-23 14:02</td>
+            </tr>
+            <tr>
+              <td><strong>Catálogo - Campanas Industriales</strong><br><small class="url-cell"><a href="https://filux.com/es/campanas-industriales-led-173" target="_blank">https://filux.com/es/campanas-industriales-led-173</a></small></td>
+              <td><span class="badge badge-desktop">🖥 Desktop</span></td>
+              <td><span class="score-badge" style="background:#888"></span> </td>
+              <td style="color:#888">— </td>
+              <td style="color:#888"> </td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="badge badge-success">✨ Óptimo</span></td>
+              <td class="ts-cell">2026-09-23 14:02</td>
+            </tr>
+            <tr>
+              <td><strong>Catálogo - Focos Proyectores</strong><br><small class="url-cell"><a href="https://filux.com/es/focos-proyectores-led-174" target="_blank">https://filux.com/es/focos-proyectores-led-174</a></small></td>
+              <td><span class="badge badge-mobile">📱 Mobile</span></td>
+              <td><span class="score-badge" style="background:#888"></span> </td>
+              <td style="color:#888">— </td>
+              <td style="color:#888"> </td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="badge badge-success">✨ Óptimo</span></td>
+              <td class="ts-cell">2026-09-23 14:02</td>
+            </tr>
+            <tr>
+              <td><strong>Catálogo - Focos Proyectores</strong><br><small class="url-cell"><a href="https://filux.com/es/focos-proyectores-led-174" target="_blank">https://filux.com/es/focos-proyectores-led-174</a></small></td>
+              <td><span class="badge badge-desktop">🖥 Desktop</span></td>
+              <td><span class="score-badge" style="background:#888"></span> </td>
+              <td style="color:#888">— </td>
+              <td style="color:#888"> </td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="badge badge-success">✨ Óptimo</span></td>
+              <td class="ts-cell">2026-09-23 14:02</td>
+            </tr>
+            <tr>
+              <td><strong>Ficha Producto - Regulador Tiras LED</strong><br><small class="url-cell"><a href="https://filux.com/es/tiras-led-outlet/-regulador-monocolor-con-mando-a-distancia-1732.html" target="_blank">https://filux.com/es/tiras-led-outlet/-regulador-monocolor-con-mando-a-distancia-1732.html</a></small></td>
+              <td><span class="badge badge-mobile">📱 Mobile</span></td>
+              <td><span class="score-badge" style="background:#888"></span> </td>
+              <td style="color:#888">— </td>
+              <td style="color:#888"> </td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="badge badge-success">✨ Óptimo</span></td>
+              <td class="ts-cell">2026-09-23 14:02</td>
+            </tr>
+            <tr>
+              <td><strong>Ficha Producto - Regulador Tiras LED</strong><br><small class="url-cell"><a href="https://filux.com/es/tiras-led-outlet/-regulador-monocolor-con-mando-a-distancia-1732.html" target="_blank">https://filux.com/es/tiras-led-outlet/-regulador-monocolor-con-mando-a-distancia-1732.html</a></small></td>
+              <td><span class="badge badge-desktop">🖥 Desktop</span></td>
+              <td><span class="score-badge" style="background:#888"></span> </td>
+              <td style="color:#888">— </td>
+              <td style="color:#888"> </td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="badge badge-success">✨ Óptimo</span></td>
+              <td class="ts-cell">2026-09-23 14:02</td>
+            </tr>
+            <tr>
+              <td><strong>Sección - Más Vendidos</strong><br><small class="url-cell"><a href="https://filux.com/es/mas-vendidos" target="_blank">https://filux.com/es/mas-vendidos</a></small></td>
+              <td><span class="badge badge-mobile">📱 Mobile</span></td>
+              <td><span class="score-badge" style="background:#888"></span> </td>
+              <td style="color:#888">— </td>
+              <td style="color:#888"> </td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="badge badge-success">✨ Óptimo</span></td>
+              <td class="ts-cell">2026-09-23 14:02</td>
+            </tr>
+            <tr>
+              <td><strong>Sección - Más Vendidos</strong><br><small class="url-cell"><a href="https://filux.com/es/mas-vendidos" target="_blank">https://filux.com/es/mas-vendidos</a></small></td>
+              <td><span class="badge badge-desktop">🖥 Desktop</span></td>
+              <td><span class="score-badge" style="background:#888"></span> </td>
+              <td style="color:#888">— </td>
+              <td style="color:#888"> </td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="badge badge-success">✨ Óptimo</span></td>
+              <td class="ts-cell">2026-09-23 14:02</td>
+            </tr>
+            <tr>
+              <td><strong>Contacto</strong><br><small class="url-cell"><a href="https://filux.com/es/contactenos" target="_blank">https://filux.com/es/contactenos</a></small></td>
+              <td><span class="badge badge-mobile">📱 Mobile</span></td>
+              <td><span class="score-badge" style="background:#888"></span> </td>
+              <td style="color:#888">— </td>
+              <td style="color:#888"> </td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="badge badge-success">✨ Óptimo</span></td>
+              <td class="ts-cell">2026-09-23 14:02</td>
+            </tr>
+            <tr>
+              <td><strong>Contacto</strong><br><small class="url-cell"><a href="https://filux.com/es/contactenos" target="_blank">https://filux.com/es/contactenos</a></small></td>
+              <td><span class="badge badge-desktop">🖥 Desktop</span></td>
+              <td><span class="score-badge" style="background:#888"></span> </td>
+              <td style="color:#888">— </td>
+              <td style="color:#888"> </td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="badge badge-success">✨ Óptimo</span></td>
+              <td class="ts-cell">2026-09-23 14:02</td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Oportunidades y Diagnósticos de Lighthouse -->
+  
+
+  <!-- Gráficas de evolución -->
+  <section>
+    <h2>📈 Evolución del Performance Score</h2>
+    <div class='charts-grid'>
+        <div class="chart-card">
+          <h3>📊 Portada (Home) — <small>https://filux.com/es/</small></h3>
+          <canvas id="chart_1"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>📊 Catálogo - Campanas Industriales — <small>https://filux.com/es/campanas-industriales-led-173</small></h3>
+          <canvas id="chart_2"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>📊 Catálogo - Focos Proyectores — <small>https://filux.com/es/focos-proyectores-led-174</small></h3>
+          <canvas id="chart_3"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>📊 Ficha Producto - Regulador Tiras LED — <small>https://filux.com/es/tiras-led-outlet/-regulador-monocolor-con-mando-a-distancia-1732.html</small></h3>
+          <canvas id="chart_4"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>📊 Sección - Más Vendidos — <small>https://filux.com/es/mas-vendidos</small></h3>
+          <canvas id="chart_5"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>📊 Contacto — <small>https://filux.com/es/contactenos</small></h3>
+          <canvas id="chart_6"></canvas>
+        </div></div>
+  </section>
+
+  <!-- Histórico completo -->
+  <section>
+    <h2>🗂 Histórico acumulado <span style="font-size:0.8rem;color:var(--muted);font-weight:400">(últimas 200 mediciones)</span></h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Página</th>
+            <th>Dispositivo</th>
+            <th>Score</th>
+            <th>LCP</th>
+            <th>CLS</th>
+            <th>FCP</th>
+            <th>TBT</th>
+            <th>Principal mejora</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        <tr>
+          <td class="ts-cell">2026-09-23 14:02</td>
+          <td>Contacto</td>
+          <td><span class="badge badge-desktop">🖥 Desktop</span></td>
+          <td><span class="score-badge" style="background:#888"></span></td>
+          <td>—</td>
+          <td style="color:#888"></td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td class="ts-cell">2026-09-23 14:02</td>
+          <td>Contacto</td>
+          <td><span class="badge badge-mobile">📱 Mobile</span></td>
+          <td><span class="score-badge" style="background:#888"></span></td>
+          <td>—</td>
+          <td style="color:#888"></td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td class="ts-cell">2026-09-23 14:02</td>
+          <td>Sección - Más Vendidos</td>
+          <td><span class="badge badge-desktop">🖥 Desktop</span></td>
+          <td><span class="score-badge" style="background:#888"></span></td>
+          <td>—</td>
+          <td style="color:#888"></td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td class="ts-cell">2026-09-23 14:02</td>
+          <td>Sección - Más Vendidos</td>
+          <td><span class="badge badge-mobile">📱 Mobile</span></td>
+          <td><span class="score-badge" style="background:#888"></span></td>
+          <td>—</td>
+          <td style="color:#888"></td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td class="ts-cell">2026-09-23 14:02</td>
+          <td>Ficha Producto - Regulador Tiras LED</td>
+          <td><span class="badge badge-desktop">🖥 Desktop</span></td>
+          <td><span class="score-badge" style="background:#888"></span></td>
+          <td>—</td>
+          <td style="color:#888"></td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td class="ts-cell">2026-09-23 14:02</td>
+          <td>Ficha Producto - Regulador Tiras LED</td>
+          <td><span class="badge badge-mobile">📱 Mobile</span></td>
+          <td><span class="score-badge" style="background:#888"></span></td>
+          <td>—</td>
+          <td style="color:#888"></td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td class="ts-cell">2026-09-23 14:02</td>
+          <td>Catálogo - Focos Proyectores</td>
+          <td><span class="badge badge-desktop">🖥 Desktop</span></td>
+          <td><span class="score-badge" style="background:#888"></span></td>
+          <td>—</td>
+          <td style="color:#888"></td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td class="ts-cell">2026-09-23 14:02</td>
+          <td>Catálogo - Focos Proyectores</td>
+          <td><span class="badge badge-mobile">📱 Mobile</span></td>
+          <td><span class="score-badge" style="background:#888"></span></td>
+          <td>—</td>
+          <td style="color:#888"></td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td class="ts-cell">2026-09-23 14:02</td>
+          <td>Catálogo - Campanas Industriales</td>
+          <td><span class="badge badge-desktop">🖥 Desktop</span></td>
+          <td><span class="score-badge" style="background:#888"></span></td>
+          <td>—</td>
+          <td style="color:#888"></td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td class="ts-cell">2026-09-23 14:02</td>
+          <td>Catálogo - Campanas Industriales</td>
+          <td><span class="badge badge-mobile">📱 Mobile</span></td>
+          <td><span class="score-badge" style="background:#888"></span></td>
+          <td>—</td>
+          <td style="color:#888"></td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td class="ts-cell">2026-09-23 14:02</td>
+          <td>Portada (Home)</td>
+          <td><span class="badge badge-desktop">🖥 Desktop</span></td>
+          <td><span class="score-badge" style="background:#888"></span></td>
+          <td>—</td>
+          <td style="color:#888"></td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td class="ts-cell">2026-09-23 14:02</td>
+          <td>Portada (Home)</td>
+          <td><span class="badge badge-mobile">📱 Mobile</span></td>
+          <td><span class="score-badge" style="background:#888"></span></td>
+          <td>—</td>
+          <td style="color:#888"></td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="container">
+    PageSpeed Monitor · Filux · Datos procesados con Google PageSpeed Insights & Lighthouse
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+
+        new Chart(document.getElementById('chart_1'), {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                label: 'Mobile',
+                data: [],
+                borderColor: '#a78bfa',
+                backgroundColor: '#a78bfa22',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 4,
+                pointHoverRadius: 7
+            }, {
+                label: 'Desktop',
+                data: [],
+                borderColor: '#34d399',
+                backgroundColor: '#34d39922',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 4,
+                pointHoverRadius: 7
+            }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { labels: { color: '#e2e8f0' } },
+                    tooltip: { mode: 'index', intersect: false }
+                },
+                scales: {
+                    x: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } },
+                    y: {
+                        min: 0, max: 100,
+                        ticks: { color: '#94a3b8' },
+                        grid: { color: '#334155' },
+                        title: { display: true, text: 'Score', color: '#94a3b8' }
+                    }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('chart_2'), {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                label: 'Mobile',
+                data: [],
+                borderColor: '#a78bfa',
+                backgroundColor: '#a78bfa22',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 4,
+                pointHoverRadius: 7
+            }, {
+                label: 'Desktop',
+                data: [],
+                borderColor: '#34d399',
+                backgroundColor: '#34d39922',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 4,
+                pointHoverRadius: 7
+            }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { labels: { color: '#e2e8f0' } },
+                    tooltip: { mode: 'index', intersect: false }
+                },
+                scales: {
+                    x: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } },
+                    y: {
+                        min: 0, max: 100,
+                        ticks: { color: '#94a3b8' },
+                        grid: { color: '#334155' },
+                        title: { display: true, text: 'Score', color: '#94a3b8' }
+                    }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('chart_3'), {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                label: 'Mobile',
+                data: [],
+                borderColor: '#a78bfa',
+                backgroundColor: '#a78bfa22',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 4,
+                pointHoverRadius: 7
+            }, {
+                label: 'Desktop',
+                data: [],
+                borderColor: '#34d399',
+                backgroundColor: '#34d39922',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 4,
+                pointHoverRadius: 7
+            }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { labels: { color: '#e2e8f0' } },
+                    tooltip: { mode: 'index', intersect: false }
+                },
+                scales: {
+                    x: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } },
+                    y: {
+                        min: 0, max: 100,
+                        ticks: { color: '#94a3b8' },
+                        grid: { color: '#334155' },
+                        title: { display: true, text: 'Score', color: '#94a3b8' }
+                    }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('chart_4'), {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                label: 'Mobile',
+                data: [],
+                borderColor: '#a78bfa',
+                backgroundColor: '#a78bfa22',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 4,
+                pointHoverRadius: 7
+            }, {
+                label: 'Desktop',
+                data: [],
+                borderColor: '#34d399',
+                backgroundColor: '#34d39922',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 4,
+                pointHoverRadius: 7
+            }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { labels: { color: '#e2e8f0' } },
+                    tooltip: { mode: 'index', intersect: false }
+                },
+                scales: {
+                    x: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } },
+                    y: {
+                        min: 0, max: 100,
+                        ticks: { color: '#94a3b8' },
+                        grid: { color: '#334155' },
+                        title: { display: true, text: 'Score', color: '#94a3b8' }
+                    }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('chart_5'), {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                label: 'Mobile',
+                data: [],
+                borderColor: '#a78bfa',
+                backgroundColor: '#a78bfa22',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 4,
+                pointHoverRadius: 7
+            }, {
+                label: 'Desktop',
+                data: [],
+                borderColor: '#34d399',
+                backgroundColor: '#34d39922',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 4,
+                pointHoverRadius: 7
+            }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { labels: { color: '#e2e8f0' } },
+                    tooltip: { mode: 'index', intersect: false }
+                },
+                scales: {
+                    x: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } },
+                    y: {
+                        min: 0, max: 100,
+                        ticks: { color: '#94a3b8' },
+                        grid: { color: '#334155' },
+                        title: { display: true, text: 'Score', color: '#94a3b8' }
+                    }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('chart_6'), {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                label: 'Mobile',
+                data: [],
+                borderColor: '#a78bfa',
+                backgroundColor: '#a78bfa22',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 4,
+                pointHoverRadius: 7
+            }, {
+                label: 'Desktop',
+                data: [],
+                borderColor: '#34d399',
+                backgroundColor: '#34d39922',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 4,
+                pointHoverRadius: 7
+            }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { labels: { color: '#e2e8f0' } },
+                    tooltip: { mode: 'index', intersect: false }
+                },
+                scales: {
+                    x: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } },
+                    y: {
+                        min: 0, max: 100,
+                        ticks: { color: '#94a3b8' },
+                        grid: { color: '#334155' },
+                        title: { display: true, text: 'Score', color: '#94a3b8' }
+                    }
+                }
+            }
+        });
+</script>
+
+</body>
+</html>

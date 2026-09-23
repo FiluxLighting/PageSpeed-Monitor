@@ -1,0 +1,30 @@
+{
+  "api_key": "",
+  "strategies": ["mobile", "desktop"],
+  "urls": [
+    {
+      "label": "Portada (Home)",
+      "url": "https://filux.com/es/"
+    },
+    {
+      "label": "Catálogo - Campanas Industriales",
+      "url": "https://filux.com/es/campanas-industriales-led-173"
+    },
+    {
+      "label": "Catálogo - Focos Proyectores",
+      "url": "https://filux.com/es/focos-proyectores-led-174"
+    },
+    {
+      "label": "Ficha Producto - Regulador Tiras LED",
+      "url": "https://filux.com/es/tiras-led-outlet/-regulador-monocolor-con-mando-a-distancia-1732.html"
+    },
+    {
+      "label": "Sección - Más Vendidos",
+      "url": "https://filux.com/es/mas-vendidos"
+    },
+    {
+      "label": "Contacto",
+      "url": "https://filux.com/es/contactenos"
+    }
+  ]
+}
