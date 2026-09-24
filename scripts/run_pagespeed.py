@@ -29,6 +29,7 @@ REPORTS_DIR = ROOT / "reports"
 HISTORY_CSV = DATA_DIR / "history.csv"
 LATEST_AUDITS_JSON = DATA_DIR / "latest_audits.json"
 REPORT_HTML = REPORTS_DIR / "report.html"
+INDEX_HTML = ROOT / "index.html"
 
 # Campos del CSV
 CSV_FIELDS = [
@@ -56,6 +57,21 @@ CLS_THRESHOLDS = {"good": 0.1, "needs_improvement": 0.25}
 # ---------------------------------------------------------------------------
 # Utilidades
 # ---------------------------------------------------------------------------
+
+def load_env():
+    """Carga variables desde un archivo .env si existe en la raíz."""
+    env_file = ROOT / ".env"
+    if env_file.exists():
+        with open(env_file, encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    k, v = line.split("=", 1)
+                    k = k.strip()
+                    v = v.strip().strip('"').strip("'")
+                    if k and k not in os.environ:
+                        os.environ[k] = v
+
 
 def load_config():
     with open(CONFIG_FILE, encoding="utf-8") as f:
@@ -172,6 +188,15 @@ def ensure_csv_header():
         with open(HISTORY_CSV, "w", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(f, fieldnames=CSV_FIELDS)
             writer.writeheader()
+    else:
+        with open(HISTORY_CSV, "r", encoding="utf-8") as f:
+            lines = f.readlines()
+        if lines:
+            header = lines[0].strip().split(",")
+            if header != CSV_FIELDS:
+                lines[0] = ",".join(CSV_FIELDS) + "\n"
+                with open(HISTORY_CSV, "w", encoding="utf-8") as f:
+                    f.writelines(lines)
 
 
 def append_row(row: dict):
@@ -279,11 +304,36 @@ def delta_html(current, previous, lower_is_better=False, is_time_ms=False, is_cl
     return f'<span style="color:{color};font-size:0.85em">{display} {arrow}</span>'
 
 
-def build_chart_datasets(history: list, label: str, strategy: str) -> tuple:
-    rows = [r for r in history if r.get("label") == label and r.get("strategy") == strategy and r.get("performance_score")]
-    labels = [r["timestamp"][:10] for r in rows]
-    scores = [r["performance_score"] for r in rows]
-    return json.dumps(labels), json.dumps(scores)
+def build_chart_datasets(history: list, label: str, strategies: list) -> tuple:
+    relevant_rows = [r for r in history if r.get("label") == label and r.get("performance_score")]
+    all_timestamps = sorted(list(set(r["timestamp"] for r in relevant_rows if r.get("timestamp"))))
+
+    # Si hay múltiples mediciones en un mismo día, incluir la hora
+    unique_dates = set(t[:10] for t in all_timestamps)
+    has_multiple_in_day = len(unique_dates) < len(all_timestamps)
+
+    if has_multiple_in_day:
+        formatted_labels = [t[:16].replace("T", " ") for t in all_timestamps]
+    else:
+        formatted_labels = [t[:10] for t in all_timestamps]
+
+    datasets_by_strat = {}
+    for strat in strategies:
+        strat_rows = {
+            r["timestamp"]: r["performance_score"]
+            for r in history
+            if r.get("label") == label and r.get("strategy") == strat and r.get("performance_score")
+        }
+        scores = []
+        for ts in all_timestamps:
+            val = strat_rows.get(ts)
+            try:
+                scores.append(int(val) if val is not None else None)
+            except (ValueError, TypeError):
+                scores.append(None)
+        datasets_by_strat[strat] = scores
+
+    return formatted_labels, datasets_by_strat
 
 
 def generate_html(history: list, config: dict, latest_audits: dict):
@@ -314,24 +364,25 @@ def generate_html(history: list, config: dict, latest_audits: dict):
             if current is None:
                 continue
 
-            score = current.get("performance_score", "—")
-            lcp = current.get("lcp_ms", "—")
-            cls_v = current.get("cls", "—")
-            fcp = current.get("fcp_ms", "—")
-            tbt = current.get("tbt_ms", "—")
+            score = current.get("performance_score") or ""
+            lcp = current.get("lcp_ms") or ""
+            cls_v = current.get("cls") or ""
+            fcp = current.get("fcp_ms") or ""
+            tbt = current.get("tbt_ms") or ""
+            err = current.get("error") or ""
 
             try:
-                cls_display = f"{float(cls_v):.3f}"
+                cls_display = f"{float(cls_v):.3f}" if cls_v else "—"
             except (ValueError, TypeError):
-                cls_display = cls_v
+                cls_display = cls_v or "—"
 
-            score_c = score_color(score)
-            lcp_c = metric_color_lcp(lcp)
-            cls_c = metric_color_cls(cls_v)
+            score_c = score_color(score) if score else "#888"
+            lcp_c = metric_color_lcp(lcp) if lcp else "inherit"
+            cls_c = metric_color_cls(cls_v) if cls_v else "inherit"
 
-            d_score = delta_html(score, previous.get("performance_score") if previous else None)
-            d_lcp = delta_html(lcp, previous.get("lcp_ms") if previous else None, lower_is_better=True, is_time_ms=True)
-            d_cls = delta_html(cls_v, previous.get("cls") if previous else None, lower_is_better=True, is_cls=True)
+            d_score = delta_html(score, previous.get("performance_score") if previous else None) if score else ""
+            d_lcp = delta_html(lcp, previous.get("lcp_ms") if previous else None, lower_is_better=True, is_time_ms=True) if lcp else ""
+            d_cls = delta_html(cls_v, previous.get("cls") if previous else None, lower_is_better=True, is_cls=True) if cls_v else ""
 
             strat_badge = (
                 '<span class="badge badge-mobile">📱 Mobile</span>'
@@ -339,10 +390,17 @@ def generate_html(history: list, config: dict, latest_audits: dict):
                 else '<span class="badge badge-desktop">🖥 Desktop</span>'
             )
 
-            lcp_s = f"{int(lcp)/1000:.2f}s" if lcp and lcp != "—" else "—"
-            fcp_s = f"{int(fcp)/1000:.2f}s" if fcp and fcp != "—" else "—"
-            tbt_s = f"{int(tbt)}ms" if tbt and tbt != "—" else "—"
+            lcp_s = f"{int(lcp)/1000:.2f}s" if lcp else "—"
+            fcp_s = f"{int(fcp)/1000:.2f}s" if fcp else "—"
+            tbt_s = f"{int(tbt)}ms" if tbt else "—"
             ts = current.get("timestamp", "")[:16].replace("T", " ")
+
+            if score:
+                score_html = f'<span class="score-badge" style="background:{score_c}">{score}</span> {d_score}'
+            elif err:
+                score_html = f'<span class="badge badge-error" title="{escape(err)}">⚠️ Error API</span>'
+            else:
+                score_html = '<span style="color:var(--muted)">—</span>'
 
             # Obtener oportunidades de mejora de esta URL/estrategia
             audit_key = f"{url}::{strat}"
@@ -352,14 +410,16 @@ def generate_html(history: list, config: dict, latest_audits: dict):
 
             if opps_count > 0:
                 opps_badge = f'<span class="badge badge-warning">🛠️ {opps_count} mejoras</span>'
-            else:
+            elif score:
                 opps_badge = '<span class="badge badge-success">✨ Óptimo</span>'
+            else:
+                opps_badge = '<span style="color:var(--muted)">—</span>'
 
             summary_rows_html.append(f"""
             <tr>
               <td><strong>{escape(lbl)}</strong><br><small class="url-cell"><a href="{escape(url)}" target="_blank">{escape(url)}</a></small></td>
               <td>{strat_badge}</td>
-              <td><span class="score-badge" style="background:{score_c}">{score}</span> {d_score}</td>
+              <td>{score_html}</td>
               <td style="color:{lcp_c}">{lcp_s} {d_lcp}</td>
               <td style="color:{cls_c}">{cls_display} {d_cls}</td>
               <td>{fcp_s}</td>
@@ -408,21 +468,23 @@ def generate_html(history: list, config: dict, latest_audits: dict):
         canvas_id = f"chart_{chart_idx}"
         datasets = []
         colors = {"mobile": "#a78bfa", "desktop": "#34d399"}
+
+        formatted_labels, datasets_by_strat = build_chart_datasets(history, lbl, strategies)
+
         for strat in strategies:
-            xlabels, scores = build_chart_datasets(history, lbl, strat)
+            scores = datasets_by_strat.get(strat, [])
             color = colors.get(strat, "#60a5fa")
             datasets.append(f"""{{
                 label: '{strat.capitalize()}',
-                data: {scores},
+                data: {json.dumps(scores)},
                 borderColor: '{color}',
                 backgroundColor: '{color}22',
                 fill: true,
                 tension: 0.4,
                 pointRadius: 4,
-                pointHoverRadius: 7
+                pointHoverRadius: 7,
+                spanGaps: true
             }}""")
-
-        first_labels, _ = build_chart_datasets(history, lbl, strategies[0])
 
         chart_canvases.append(f"""
         <div class="chart-card">
@@ -434,7 +496,7 @@ def generate_html(history: list, config: dict, latest_audits: dict):
         new Chart(document.getElementById('{canvas_id}'), {{
             type: 'line',
             data: {{
-                labels: {first_labels},
+                labels: {json.dumps(formatted_labels)},
                 datasets: [{", ".join(datasets)}]
             }},
             options: {{
@@ -555,6 +617,7 @@ def generate_html(history: list, config: dict, latest_audits: dict):
   .badge-desktop {{ background: #06643033; color: #34d399; border: 1px solid #34d39944; }}
   .badge-warning {{ background: #ffa40022; color: #ffa400; border: 1px solid #ffa40044; }}
   .badge-success {{ background: #0cce6b22; color: #0cce6b; border: 1px solid #0cce6b44; }}
+  .badge-error {{ background: #ff4e4222; color: #ff4e42; border: 1px solid #ff4e4244; }}
 
   /* Oportunidades & Diagnósticos */
   .opps-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 1.25rem; }}
@@ -702,7 +765,10 @@ def generate_html(history: list, config: dict, latest_audits: dict):
 
     with open(REPORT_HTML, "w", encoding="utf-8") as f:
         f.write(html)
+    with open(INDEX_HTML, "w", encoding="utf-8") as f:
+        f.write(html)
     print(f"  ✅ Informe generado en {REPORT_HTML}")
+    print(f"  ✅ Informe publicado en la raíz: {INDEX_HTML} (para GitHub Pages)")
 
 
 # ---------------------------------------------------------------------------
@@ -713,6 +779,7 @@ def main():
     print("🚀 PageSpeed Monitor — Filux")
     print("=" * 55)
 
+    load_env()
     config = load_config()
     api_key = os.environ.get("PAGESPEED_API_KEY") or config.get("api_key", "")
     urls = config.get("urls", [])
@@ -797,6 +864,7 @@ def main():
     print(f"   Histórico CSV:  {HISTORY_CSV}")
     print(f"   Auditorías JSON: {LATEST_AUDITS_JSON}")
     print(f"   Informe HTML:   {REPORT_HTML}")
+    print(f"   GitHub Pages:   {INDEX_HTML}")
 
 
 if __name__ == "__main__":

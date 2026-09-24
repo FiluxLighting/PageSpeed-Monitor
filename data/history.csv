@@ -1,4 +1,4 @@
-timestamp,label,url,strategy,performance_score,lcp_ms,fcp_ms,cls,tbt_ms,speed_index_ms,tti_ms,error
+timestamp,label,url,strategy,performance_score,lcp_ms,fcp_ms,cls,tbt_ms,speed_index_ms,tti_ms,opportunities_count,top_opportunity,error
 2026-09-23T14:02:31Z,Portada (Home),https://filux.com/es/,mobile,,,,,,,,0,,HTTP Error 429: Too Many Requests
 2026-09-23T14:02:31Z,Portada (Home),https://filux.com/es/,desktop,,,,,,,,0,,HTTP Error 429: Too Many Requests
 2026-09-23T14:02:31Z,Catálogo - Campanas Industriales,https://filux.com/es/campanas-industriales-led-173,mobile,,,,,,,,0,,HTTP Error 429: Too Many Requests
@@ -11,3 +11,15 @@ timestamp,label,url,strategy,performance_score,lcp_ms,fcp_ms,cls,tbt_ms,speed_in
 2026-09-23T14:02:31Z,Sección - Más Vendidos,https://filux.com/es/mas-vendidos,desktop,,,,,,,,0,,HTTP Error 429: Too Many Requests
 2026-09-23T14:02:31Z,Contacto,https://filux.com/es/contactenos,mobile,,,,,,,,0,,HTTP Error 429: Too Many Requests
 2026-09-23T14:02:31Z,Contacto,https://filux.com/es/contactenos,desktop,,,,,,,,0,,HTTP Error 429: Too Many Requests
+2026-09-23T14:17:58Z,Portada (Home),https://filux.com/es/,mobile,66,4626,2457,0.01625413655439591,463,4672,14768,9,Reduce unused JavaScript (840ms ahorro · 453 KB ahorro),
+2026-09-23T14:17:58Z,Portada (Home),https://filux.com/es/,desktop,95,761,536,0.004575912945597825,154,1235,3109,4,Reduce unused CSS (110ms ahorro · 131 KB ahorro),
+2026-09-23T14:17:58Z,Catálogo - Campanas Industriales,https://filux.com/es/campanas-industriales-led-173,mobile,57,4052,2437,0.01726702431267466,886,6425,15429,12,Reduce unused CSS (600ms ahorro · 142 KB ahorro),
+2026-09-23T14:17:58Z,Catálogo - Campanas Industriales,https://filux.com/es/campanas-industriales-led-173,desktop,58,2738,554,0.00814465766106973,594,1856,3443,10,Reduce unused JavaScript (420ms ahorro · 525 KB ahorro),
+2026-09-23T14:17:58Z,Catálogo - Focos Proyectores,https://filux.com/es/focos-proyectores-led-174,mobile,54,6226,2434,0.016878597751383874,626,5615,15232,11,Reduce unused JavaScript (1.20s ahorro · 522 KB ahorro),
+2026-09-23T14:17:58Z,Catálogo - Focos Proyectores,https://filux.com/es/focos-proyectores-led-174,desktop,38,4881,740,0.013425137118619304,3735,4167,6991,12,Reduce unused JavaScript (30ms ahorro · 523 KB ahorro),
+2026-09-23T14:17:58Z,Ficha Producto - Regulador Tiras LED,https://filux.com/es/tiras-led-outlet/-regulador-monocolor-con-mando-a-distancia-1732.html,mobile,53,7102,2431,0.01629921653854324,652,5083,14187,11,Reduce unused JavaScript (1.38s ahorro · 461 KB ahorro),
+2026-09-23T14:17:58Z,Ficha Producto - Regulador Tiras LED,https://filux.com/es/tiras-led-outlet/-regulador-monocolor-con-mando-a-distancia-1732.html,desktop,83,1368,575,0.09014960012182954,241,1614,3178,5,Reduce unused JavaScript (170ms ahorro · 460 KB ahorro),
+2026-09-23T14:17:58Z,Sección - Más Vendidos,https://filux.com/es/mas-vendidos,mobile,67,5557,2418,0.01725799398198696,294,4553,13860,8,Reduce unused JavaScript (900ms ahorro · 477 KB ahorro),
+2026-09-23T14:17:58Z,Sección - Más Vendidos,https://filux.com/es/mas-vendidos,desktop,74,2456,542,0.006708298824413542,277,1578,2550,5,Reduce unused JavaScript (310ms ahorro · 476 KB ahorro),
+2026-09-23T14:17:58Z,Contacto,https://filux.com/es/contactenos,mobile,48,14385,2428,0.016621563061515462,832,5475,15777,11,Reduce unused JavaScript (3.90s ahorro · 833 KB ahorro),
+2026-09-23T14:17:58Z,Contacto,https://filux.com/es/contactenos,desktop,70,2953,784,0.004323420552856025,288,1452,3423,6,Reduce unused JavaScript (680ms ahorro · 834 KB ahorro),

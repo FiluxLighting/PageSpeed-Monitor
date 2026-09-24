@@ -1,9 +1,9 @@
 name: PageSpeed Monitor
 
 on:
-  # Ejecución automática: lunes a las 8:00 UTC (ajusta el cron a tu conveniencia)
+  # Ejecución automática: todos los días a las 8:00 UTC
   schedule:
-    - cron: "0 8 * * 1"
+    - cron: "0 8 * * *"
 
   # Ejecución manual desde la pestaña Actions de GitHub
   workflow_dispatch:
@@ -27,9 +27,6 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Instalar dependencias
-        run: pip install requests
-
       - name: Ejecutar PageSpeed Monitor
         env:
           # Configura este secreto en: Settings > Secrets and variables > Actions
@@ -40,8 +37,9 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/history.csv data/latest_audits.json reports/report.html
+          git add data/history.csv data/latest_audits.json reports/report.html index.html .nojekyll
           git diff --staged --quiet || git commit -m "chore: actualizar métricas PageSpeed [$(date -u +'%Y-%m-%d %H:%M UTC')]"
+          git pull --rebase origin main || true
           git push
 
       # Opcional: publicar el report.html como GitHub Pages (descomenta si usas Pages)

@@ -32,7 +32,7 @@ Abre [`config/urls.json`](config/urls.json) y ajusta la lista de URLs:
 }
 ```
 
-> ℹ️ Puedes dejar `api_key` vacío para pruebas (límite reducido). Para producción, usa un secreto de GitHub (ver paso 3).
+> ℹ️ En `config/urls.json` se recomienda dejar `"api_key": ""`. Para local, crea un archivo `.env` con `PAGESPEED_API_KEY=tu_clave` (está en `.gitignore` para no subirlo a git). Para GitHub Actions, usa un secreto (paso 3).
 
 ### 2. Obtener una API Key gratuita (recomendado)
 
@@ -49,30 +49,30 @@ Abre [`config/urls.json`](config/urls.json) y ajusta la lista de URLs:
 
 ### 4. Configurar la frecuencia de ejecución
 
-Edita el cron en [`.github/workflows/pagespeed.yml`](.github/workflows/pagespeed.yml):
+Configurado por defecto para ejecutarse **todos los días** a las 8:00 UTC en [`.github/workflows/pagespeed.yml`](.github/workflows/pagespeed.yml):
 
 ```yaml
 schedule:
-  - cron: "0 8 * * 1"   # Cada lunes a las 8:00 UTC
-  # - cron: "0 8 * * *"  # Cada día a las 8:00 UTC
-  # - cron: "0 8 * * 1,4" # Lunes y jueves
+  - cron: "0 8 * * *"   # Cada día a las 8:00 UTC
+  # - cron: "0 8 * * 1"   # Opcional: solo lunes
 ```
 
 ---
 
 ## Ejecución local
 
-```bash
-# Instalar dependencias
-pip install requests
+No requiere librerías externas (utiliza únicamente la librería estándar de Python 3):
 
-# Ejecutar (asegúrate de estar en la raíz del proyecto)
+```bash
+# Ejecutar desde la raíz del proyecto
 python3 scripts/run_pagespeed.py
 ```
 
 El script generará o actualizará:
 - `data/history.csv` — histórico de todas las mediciones
-- `reports/report.html` — informe visual (ábrelo en tu navegador)
+- `data/latest_audits.json` — diagnósticos y mejoras técnicas detectadas por Lighthouse
+- `index.html` — dashboard visual publicado automáticamente en GitHub Pages
+- `reports/report.html` — copia del informe en reports
 
 ---
 
@@ -80,11 +80,14 @@ El script generará o actualizará:
 
 ```
 pagespeed-monitor/
-├── .github/workflows/pagespeed.yml  # Automatización con GitHub Actions
-├── config/urls.json                 # URLs y configuración
-├── scripts/run_pagespeed.py         # Script principal
-├── data/history.csv                 # Histórico CSV (auto-generado)
-└── reports/report.html              # Informe HTML (auto-generado)
+├── .github/workflows/pagespeed.yml  # Automatización periódica con GitHub Actions
+├── config/urls.json                 # URLs y estrategias configuradas
+├── scripts/run_pagespeed.py         # Script principal (API Google + Reporte)
+├── data/history.csv                 # Histórico CSV acumulado (auto-generado)
+├── data/latest_audits.json          # Diagnósticos técnicos detallados (auto-generado)
+├── index.html                       # Dashboard interactivo para GitHub Pages
+├── reports/report.html              # Copia de respaldo del informe HTML
+└── .nojekyll                        # Evita que Jekyll bloquee archivos estáticos en Pages
 ```
 
 ---
