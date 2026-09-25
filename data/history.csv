@@ -35,3 +35,15 @@ timestamp,label,url,strategy,performance_score,lcp_ms,fcp_ms,cls,tbt_ms,speed_in
 2026-09-24T13:11:28Z,Sección - Más Vendidos,https://filux.com/es/mas-vendidos,desktop,43,3554,758,0.005019951453224708,2395,2971,4973,11,Reduce unused JavaScript (240ms ahorro · 477 KB ahorro),
 2026-09-24T13:11:28Z,Contacto,https://filux.com/es/contactenos,mobile,56,14368,2416,0.016621563061515462,441,5865,15856,9,Reduce unused JavaScript (4.19s ahorro · 833 KB ahorro),
 2026-09-24T13:11:28Z,Contacto,https://filux.com/es/contactenos,desktop,54,3270,545,0.004323420552856025,678,1712,3661,10,Reduce unused JavaScript (910ms ahorro · 834 KB ahorro),
+2026-09-25T13:14:48Z,Portada (Home),https://filux.com/es/,mobile,65,3752,2431,0.016488977112512196,634,5856,13351,10,Reduce unused CSS (750ms ahorro · 131 KB ahorro),
+2026-09-25T13:14:48Z,Portada (Home),https://filux.com/es/,desktop,68,999,557,0.0045977730218890265,741,2049,3037,8,Reduce unused JavaScript (40ms ahorro · 454 KB ahorro),
+2026-09-25T13:14:48Z,Catálogo - Campanas Industriales,https://filux.com/es/campanas-industriales-led-173,mobile,,,,,,,,0,,HTTP Error 500: Internal Server Error
+2026-09-25T13:14:48Z,Catálogo - Campanas Industriales,https://filux.com/es/campanas-industriales-led-173,desktop,,,,,,,,0,,The read operation timed out
+2026-09-25T13:14:48Z,Catálogo - Focos Proyectores,https://filux.com/es/focos-proyectores-led-174,mobile,,,,,,,,0,,HTTP Error 500: Internal Server Error
+2026-09-25T13:14:48Z,Catálogo - Focos Proyectores,https://filux.com/es/focos-proyectores-led-174,desktop,,,,,,,,0,,The read operation timed out
+2026-09-25T13:14:48Z,Ficha Producto - Regulador Tiras LED,https://filux.com/es/tiras-led-outlet/-regulador-monocolor-con-mando-a-distancia-1732.html,mobile,,,,,,,,0,,HTTP Error 500: Internal Server Error
+2026-09-25T13:14:48Z,Ficha Producto - Regulador Tiras LED,https://filux.com/es/tiras-led-outlet/-regulador-monocolor-con-mando-a-distancia-1732.html,desktop,,,,,,,,0,,HTTP Error 500: Internal Server Error
+2026-09-25T13:14:48Z,Sección - Más Vendidos,https://filux.com/es/mas-vendidos,mobile,51,5252,2450,0.01725799398198696,802,7113,12745,12,Reduce unused CSS (900ms ahorro · 133 KB ahorro),
+2026-09-25T13:14:48Z,Sección - Más Vendidos,https://filux.com/es/mas-vendidos,desktop,,,,,,,,0,,HTTP Error 500: Internal Server Error
+2026-09-25T13:14:48Z,Contacto,https://filux.com/es/contactenos,mobile,,,,,,,,0,,HTTP Error 500: Internal Server Error
+2026-09-25T13:14:48Z,Contacto,https://filux.com/es/contactenos,desktop,69,3043,726,0.0043364165001284856,276,1816,3066,5,Reduce unused JavaScript (640ms ahorro · 835 KB ahorro),
