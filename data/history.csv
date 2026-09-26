@@ -47,3 +47,15 @@ timestamp,label,url,strategy,performance_score,lcp_ms,fcp_ms,cls,tbt_ms,speed_in
 2026-09-25T13:14:48Z,Sección - Más Vendidos,https://filux.com/es/mas-vendidos,desktop,,,,,,,,0,,HTTP Error 500: Internal Server Error
 2026-09-25T13:14:48Z,Contacto,https://filux.com/es/contactenos,mobile,,,,,,,,0,,HTTP Error 500: Internal Server Error
 2026-09-25T13:14:48Z,Contacto,https://filux.com/es/contactenos,desktop,69,3043,726,0.0043364165001284856,276,1816,3066,5,Reduce unused JavaScript (640ms ahorro · 835 KB ahorro),
+2026-09-26T12:39:51Z,Portada (Home),https://filux.com/es/,mobile,75,3151,2429,0.016488977112512196,442,5707,12807,9,Reduce unused CSS (570ms ahorro · 131 KB ahorro),
+2026-09-26T12:39:51Z,Portada (Home),https://filux.com/es/,desktop,65,1233,556,0.004584777074616566,1209,1900,3363,9,Reduce unused JavaScript (120ms ahorro · 455 KB ahorro),
+2026-09-26T12:39:51Z,Catálogo - Campanas Industriales,https://filux.com/es/campanas-industriales-led-173,mobile,82,3601,2418,0.016006639255450233,92,5406,13042,6,Reduce unused CSS (730ms ahorro · 142 KB ahorro),
+2026-09-26T12:39:51Z,Catálogo - Campanas Industriales,https://filux.com/es/campanas-industriales-led-173,desktop,64,2957,755,0.00745580679541441,305,2600,2963,6,Reduce unused JavaScript (400ms ahorro · 527 KB ahorro),
+2026-09-26T12:39:51Z,Catálogo - Focos Proyectores,https://filux.com/es/focos-proyectores-led-174,mobile,61,6676,2424,0.015924522541332285,396,5083,13338,7,Reduce unused JavaScript (1.20s ahorro · 524 KB ahorro),
+2026-09-26T12:39:51Z,Catálogo - Focos Proyectores,https://filux.com/es/focos-proyectores-led-174,desktop,64,2892,542,0.008143784081755324,358,2197,2898,7,Reduce unused JavaScript (440ms ahorro · 527 KB ahorro),
+2026-09-26T12:39:51Z,Ficha Producto - Regulador Tiras LED,https://filux.com/es/tiras-led-outlet/-regulador-monocolor-con-mando-a-distancia-1732.html,mobile,40,6621,2441,0.13864135018101942,1141,6099,12094,13,Reduce unused JavaScript (1.07s ahorro · 461 KB ahorro),
+2026-09-26T12:39:51Z,Ficha Producto - Regulador Tiras LED,https://filux.com/es/tiras-led-outlet/-regulador-monocolor-con-mando-a-distancia-1732.html,desktop,78,1281,579,0.0898883863270959,297,2043,2569,4,Reduce unused JavaScript (150ms ahorro · 461 KB ahorro),
+2026-09-26T12:39:51Z,Sección - Más Vendidos,https://filux.com/es/mas-vendidos,mobile,55,5476,2440,0.01725799398198696,658,5564,12429,13,Reduce unused JavaScript (750ms ahorro · 478 KB ahorro),
+2026-09-26T12:39:51Z,Sección - Más Vendidos,https://filux.com/es/mas-vendidos,desktop,71,2548,726,0.006708298824413542,271,2095,2550,5,Reduce unused JavaScript (400ms ahorro · 479 KB ahorro),
+2026-09-26T12:39:51Z,Contacto,https://filux.com/es/contactenos,mobile,45,14490,2423,0.01736621102819245,917,6666,14604,12,Reduce unused JavaScript (4.12s ahorro · 835 KB ahorro),
+2026-09-26T12:39:51Z,Contacto,https://filux.com/es/contactenos,desktop,51,3185,547,0.004323420552856025,913,1899,3297,9,Reduce unused JavaScript (520ms ahorro · 835 KB ahorro),
