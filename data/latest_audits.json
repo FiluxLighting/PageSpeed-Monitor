@@ -1,18 +1,18 @@
 {
   "https://filux.com/es/::mobile": {
-    "timestamp": "2026-10-15T13:03:56Z",
+    "timestamp": "2026-10-16T13:00:51Z",
     "label": "Portada (Home)",
     "url": "https://filux.com/es/",
     "strategy": "mobile",
-    "performance_score": 65,
+    "performance_score": 60,
     "opportunities": [
       {
         "id": "unused-css-rules",
         "title": "Reduce unused CSS",
         "score": 0,
-        "savings_ms": 300,
+        "savings_ms": 450,
         "savings_bytes": 100473,
-        "savings_label": "300ms ahorro · 98 KB ahorro",
+        "savings_label": "450ms ahorro · 98 KB ahorro",
         "display_val": "Est savings of 98 KiB",
         "description": "Reduce unused rules from stylesheets and defer CSS not used for above-the-fold content to decrease bytes consumed by network activity."
       },
@@ -21,9 +21,9 @@
         "title": "Reduce unused JavaScript",
         "score": 0.5,
         "savings_ms": 0,
-        "savings_bytes": 446780,
-        "savings_label": "436 KB ahorro",
-        "display_val": "Est savings of 436 KiB",
+        "savings_bytes": 442946,
+        "savings_label": "432 KB ahorro",
+        "display_val": "Est savings of 433 KiB",
         "description": "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity."
       },
       {
@@ -32,8 +32,8 @@
         "score": 0,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "2.2 s",
-        "display_val": "2.2 s",
+        "savings_label": "2.7 s",
+        "display_val": "2.7 s",
         "description": "Consider reducing the time spent parsing, compiling and executing JS. You may find delivering smaller JS payloads helps with this."
       },
       {
@@ -42,8 +42,8 @@
         "score": 0,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "Est savings of 1,020 ms",
-        "display_val": "Est savings of 1,020 ms",
+        "savings_label": "Est savings of 1,170 ms",
+        "display_val": "Est savings of 1,170 ms",
         "description": "Requests are blocking the page's initial render, which may delay LCP."
       },
       {
@@ -52,8 +52,8 @@
         "score": 0,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "1.4 s",
-        "display_val": "1.4 s",
+        "savings_label": "1.6 s",
+        "display_val": "1.6 s",
         "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this."
       },
       {
@@ -67,50 +67,50 @@
         "description": "Time to Interactive is the amount of time it takes for the page to become fully interactive."
       },
       {
-        "id": "total-blocking-time",
-        "title": "Total Blocking Time",
-        "score": 0.47,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "630 ms",
-        "display_val": "630 ms",
-        "description": "Sum of all time periods between FCP and Time to Interactive, when task length exceeded 50ms, expressed in milliseconds."
-      },
-      {
         "id": "speed-index",
         "title": "Speed Index",
-        "score": 0.48,
+        "score": 0.26,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "5.9 s",
-        "display_val": "5.9 s",
+        "savings_label": "7.6 s",
+        "display_val": "7.6 s",
         "description": "Speed Index shows how quickly the contents of a page are visibly populated."
       },
       {
         "id": "max-potential-fid",
         "title": "Max Potential First Input Delay",
-        "score": 0.49,
+        "score": 0.28,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "250 ms",
-        "display_val": "250 ms",
+        "savings_label": "340 ms",
+        "display_val": "340 ms",
         "description": "The maximum potential First Input Delay that your users could experience is the duration of the longest task."
+      },
+      {
+        "id": "total-blocking-time",
+        "title": "Total Blocking Time",
+        "score": 0.33,
+        "savings_ms": 0,
+        "savings_bytes": 0,
+        "savings_label": "860 ms",
+        "display_val": "860 ms",
+        "description": "Sum of all time periods between FCP and Time to Interactive, when task length exceeded 50ms, expressed in milliseconds."
       }
     ]
   },
   "https://filux.com/es/::desktop": {
-    "timestamp": "2026-10-15T13:03:56Z",
+    "timestamp": "2026-10-16T13:00:51Z",
     "label": "Portada (Home)",
     "url": "https://filux.com/es/",
     "strategy": "desktop",
-    "performance_score": 73,
+    "performance_score": 89,
     "opportunities": [
       {
         "id": "unused-css-rules",
         "title": "Reduce unused CSS",
         "score": 0,
         "savings_ms": 80,
-        "savings_bytes": 100663,
+        "savings_bytes": 100652,
         "savings_label": "80ms ahorro · 98 KB ahorro",
         "display_val": "Est savings of 98 KiB",
         "description": "Reduce unused rules from stylesheets and defer CSS not used for above-the-fold content to decrease bytes consumed by network activity."
@@ -120,9 +120,9 @@
         "title": "Reduce unused JavaScript",
         "score": 0.5,
         "savings_ms": 0,
-        "savings_bytes": 445865,
-        "savings_label": "435 KB ahorro",
-        "display_val": "Est savings of 435 KiB",
+        "savings_bytes": 444316,
+        "savings_label": "433 KB ahorro",
+        "display_val": "Est savings of 434 KiB",
         "description": "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity."
       },
       {
@@ -131,56 +131,26 @@
         "score": 0,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "Est savings of 220 ms",
-        "display_val": "Est savings of 220 ms",
+        "savings_label": "Est savings of 260 ms",
+        "display_val": "Est savings of 260 ms",
         "description": "Requests are blocking the page's initial render, which may delay LCP."
-      },
-      {
-        "id": "bootup-time",
-        "title": "Reduce JavaScript execution time",
-        "score": 0,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "1.3 s",
-        "display_val": "1.3 s",
-        "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this."
-      },
-      {
-        "id": "mainthread-work-breakdown",
-        "title": "Minimize main-thread work",
-        "score": 0,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "2.2 s",
-        "display_val": "2.2 s",
-        "description": "Consider reducing the time spent parsing, compiling and executing JS. You may find delivering smaller JS payloads helps with this."
-      },
-      {
-        "id": "total-blocking-time",
-        "title": "Total Blocking Time",
-        "score": 0.2,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "600 ms",
-        "display_val": "600 ms",
-        "description": "Sum of all time periods between FCP and Time to Interactive, when task length exceeded 50ms, expressed in milliseconds."
       }
     ]
   },
   "https://filux.com/es/campanas-industriales-led-173::mobile": {
-    "timestamp": "2026-10-15T13:03:56Z",
+    "timestamp": "2026-10-16T13:00:51Z",
     "label": "Catálogo - Campanas Industriales",
     "url": "https://filux.com/es/campanas-industriales-led-173",
     "strategy": "mobile",
-    "performance_score": 55,
+    "performance_score": 75,
     "opportunities": [
       {
         "id": "unused-css-rules",
         "title": "Reduce unused CSS",
         "score": 0,
-        "savings_ms": 300,
-        "savings_bytes": 112256,
-        "savings_label": "300ms ahorro · 109 KB ahorro",
+        "savings_ms": 420,
+        "savings_bytes": 112265,
+        "savings_label": "420ms ahorro · 109 KB ahorro",
         "display_val": "Est savings of 110 KiB",
         "description": "Reduce unused rules from stylesheets and defer CSS not used for above-the-fold content to decrease bytes consumed by network activity."
       },
@@ -189,30 +159,20 @@
         "title": "Reduce unused JavaScript",
         "score": 0.5,
         "savings_ms": 0,
-        "savings_bytes": 519840,
-        "savings_label": "507 KB ahorro",
-        "display_val": "Est savings of 508 KiB",
+        "savings_bytes": 517102,
+        "savings_label": "504 KB ahorro",
+        "display_val": "Est savings of 505 KiB",
         "description": "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity."
       },
       {
-        "id": "image-delivery-insight",
-        "title": "Improve image delivery",
+        "id": "cache-insight",
+        "title": "Use efficient cache lifetimes",
         "score": 0,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "Est savings of 222 KiB",
-        "display_val": "Est savings of 222 KiB",
-        "description": "Reducing the download time of images can improve the perceived load time of the page and LCP."
-      },
-      {
-        "id": "mainthread-work-breakdown",
-        "title": "Minimize main-thread work",
-        "score": 0,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "3.0 s",
-        "display_val": "3.0 s",
-        "description": "Consider reducing the time spent parsing, compiling and executing JS. You may find delivering smaller JS payloads helps with this."
+        "savings_label": "Est savings of 214 KiB",
+        "display_val": "Est savings of 214 KiB",
+        "description": "A long cache lifetime can speed up repeat visits to your page."
       },
       {
         "id": "render-blocking-insight",
@@ -220,74 +180,44 @@
         "score": 0,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "Est savings of 1,310 ms",
-        "display_val": "Est savings of 1,310 ms",
+        "savings_label": "Est savings of 1,210 ms",
+        "display_val": "Est savings of 1,210 ms",
         "description": "Requests are blocking the page's initial render, which may delay LCP."
       },
       {
-        "id": "bootup-time",
-        "title": "Reduce JavaScript execution time",
+        "id": "legacy-javascript-insight",
+        "title": "Legacy JavaScript",
         "score": 0,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "1.9 s",
-        "display_val": "1.9 s",
-        "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this."
+        "savings_label": "Est savings of 32 KiB",
+        "display_val": "Est savings of 32 KiB",
+        "description": "Polyfills and transforms enable older browsers to use new JavaScript features. However, many aren't necessary for modern browsers. Consider modifying your JavaScript build process to not transpile"
       },
       {
         "id": "interactive",
         "title": "Time to Interactive",
-        "score": 0.12,
+        "score": 0.14,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "13.2 s",
-        "display_val": "13.2 s",
+        "savings_label": "12.5 s",
+        "display_val": "12.5 s",
         "description": "Time to Interactive is the amount of time it takes for the page to become fully interactive."
-      },
-      {
-        "id": "max-potential-fid",
-        "title": "Max Potential First Input Delay",
-        "score": 0.17,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "400 ms",
-        "display_val": "400 ms",
-        "description": "The maximum potential First Input Delay that your users could experience is the duration of the longest task."
-      },
-      {
-        "id": "total-blocking-time",
-        "title": "Total Blocking Time",
-        "score": 0.3,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "930 ms",
-        "display_val": "930 ms",
-        "description": "Sum of all time periods between FCP and Time to Interactive, when task length exceeded 50ms, expressed in milliseconds."
-      },
-      {
-        "id": "largest-contentful-paint",
-        "title": "Largest Contentful Paint",
-        "score": 0.44,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "4.2 s",
-        "display_val": "4.2 s",
-        "description": "Largest Contentful Paint marks the time at which the largest text or image is painted."
       },
       {
         "id": "speed-index",
         "title": "Speed Index",
-        "score": 0.49,
+        "score": 0.43,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "5.8 s",
-        "display_val": "5.8 s",
+        "savings_label": "6.2 s",
+        "display_val": "6.2 s",
         "description": "Speed Index shows how quickly the contents of a page are visibly populated."
       }
     ]
   },
   "https://filux.com/es/campanas-industriales-led-173::desktop": {
-    "timestamp": "2026-10-15T13:03:56Z",
+    "timestamp": "2026-10-16T13:00:51Z",
     "label": "Catálogo - Campanas Industriales",
     "url": "https://filux.com/es/campanas-industriales-led-173",
     "strategy": "desktop",
@@ -297,41 +227,31 @@
         "id": "unused-javascript",
         "title": "Reduce unused JavaScript",
         "score": 0,
-        "savings_ms": 380,
-        "savings_bytes": 518823,
-        "savings_label": "380ms ahorro · 506 KB ahorro",
-        "display_val": "Est savings of 507 KiB",
+        "savings_ms": 440,
+        "savings_bytes": 518018,
+        "savings_label": "440ms ahorro · 505 KB ahorro",
+        "display_val": "Est savings of 506 KiB",
         "description": "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity."
       },
       {
         "id": "unused-css-rules",
         "title": "Reduce unused CSS",
         "score": 0,
-        "savings_ms": 30,
+        "savings_ms": 100,
         "savings_bytes": 112248,
-        "savings_label": "30ms ahorro · 109 KB ahorro",
+        "savings_label": "100ms ahorro · 109 KB ahorro",
         "display_val": "Est savings of 110 KiB",
         "description": "Reduce unused rules from stylesheets and defer CSS not used for above-the-fold content to decrease bytes consumed by network activity."
       },
       {
-        "id": "bootup-time",
-        "title": "Reduce JavaScript execution time",
+        "id": "cache-insight",
+        "title": "Use efficient cache lifetimes",
         "score": 0,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "1.5 s",
-        "display_val": "1.5 s",
-        "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this."
-      },
-      {
-        "id": "mainthread-work-breakdown",
-        "title": "Minimize main-thread work",
-        "score": 0,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "2.2 s",
-        "display_val": "2.2 s",
-        "description": "Consider reducing the time spent parsing, compiling and executing JS. You may find delivering smaller JS payloads helps with this."
+        "savings_label": "Est savings of 214 KiB",
+        "display_val": "Est savings of 214 KiB",
+        "description": "A long cache lifetime can speed up repeat visits to your page."
       },
       {
         "id": "render-blocking-insight",
@@ -339,9 +259,39 @@
         "score": 0,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "Est savings of 220 ms",
-        "display_val": "Est savings of 220 ms",
+        "savings_label": "Est savings of 280 ms",
+        "display_val": "Est savings of 280 ms",
         "description": "Requests are blocking the page's initial render, which may delay LCP."
+      },
+      {
+        "id": "bootup-time",
+        "title": "Reduce JavaScript execution time",
+        "score": 0,
+        "savings_ms": 0,
+        "savings_bytes": 0,
+        "savings_label": "1.4 s",
+        "display_val": "1.4 s",
+        "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this."
+      },
+      {
+        "id": "legacy-javascript-insight",
+        "title": "Legacy JavaScript",
+        "score": 0,
+        "savings_ms": 0,
+        "savings_bytes": 0,
+        "savings_label": "Est savings of 32 KiB",
+        "display_val": "Est savings of 32 KiB",
+        "description": "Polyfills and transforms enable older browsers to use new JavaScript features. However, many aren't necessary for modern browsers. Consider modifying your JavaScript build process to not transpile"
+      },
+      {
+        "id": "mainthread-work-breakdown",
+        "title": "Minimize main-thread work",
+        "score": 0,
+        "savings_ms": 0,
+        "savings_bytes": 0,
+        "savings_label": "2.1 s",
+        "display_val": "2.1 s",
+        "description": "Consider reducing the time spent parsing, compiling and executing JS. You may find delivering smaller JS payloads helps with this."
       },
       {
         "id": "total-blocking-time",
@@ -349,18 +299,18 @@
         "score": 0.17,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "640 ms",
-        "display_val": "640 ms",
+        "savings_label": "650 ms",
+        "display_val": "650 ms",
         "description": "Sum of all time periods between FCP and Time to Interactive, when task length exceeded 50ms, expressed in milliseconds."
       },
       {
         "id": "max-potential-fid",
         "title": "Max Potential First Input Delay",
-        "score": 0.32,
+        "score": 0.37,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "320 ms",
-        "display_val": "320 ms",
+        "savings_label": "290 ms",
+        "display_val": "290 ms",
         "description": "The maximum potential First Input Delay that your users could experience is the duration of the longest task."
       },
       {
@@ -376,12 +326,22 @@
     ]
   },
   "https://filux.com/es/focos-proyectores-led-174::mobile": {
-    "timestamp": "2026-10-15T13:03:56Z",
+    "timestamp": "2026-10-16T13:00:51Z",
     "label": "Catálogo - Focos Proyectores",
     "url": "https://filux.com/es/focos-proyectores-led-174",
     "strategy": "mobile",
-    "performance_score": 56,
+    "performance_score": 43,
     "opportunities": [
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0,
+        "savings_ms": 900,
+        "savings_bytes": 517192,
+        "savings_label": "900ms ahorro · 505 KB ahorro",
+        "display_val": "Est savings of 505 KiB",
+        "description": "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity."
+      },
       {
         "id": "unused-css-rules",
         "title": "Reduce unused CSS",
@@ -393,23 +353,13 @@
         "description": "Reduce unused rules from stylesheets and defer CSS not used for above-the-fold content to decrease bytes consumed by network activity."
       },
       {
-        "id": "unused-javascript",
-        "title": "Reduce unused JavaScript",
-        "score": 0.5,
-        "savings_ms": 0,
-        "savings_bytes": 520106,
-        "savings_label": "507 KB ahorro",
-        "display_val": "Est savings of 508 KiB",
-        "description": "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity."
-      },
-      {
         "id": "render-blocking-insight",
         "title": "Render-blocking requests",
         "score": 0,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "Est savings of 1,020 ms",
-        "display_val": "Est savings of 1,020 ms",
+        "savings_label": "Est savings of 1,190 ms",
+        "display_val": "Est savings of 1,190 ms",
         "description": "Requests are blocking the page's initial render, which may delay LCP."
       },
       {
@@ -418,8 +368,8 @@
         "score": 0,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "1.6 s",
-        "display_val": "1.6 s",
+        "savings_label": "2.6 s",
+        "display_val": "2.6 s",
         "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this."
       },
       {
@@ -428,9 +378,29 @@
         "score": 0,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "2.5 s",
-        "display_val": "2.5 s",
+        "savings_label": "3.9 s",
+        "display_val": "3.9 s",
         "description": "Consider reducing the time spent parsing, compiling and executing JS. You may find delivering smaller JS payloads helps with this."
+      },
+      {
+        "id": "image-delivery-insight",
+        "title": "Improve image delivery",
+        "score": 0,
+        "savings_ms": 0,
+        "savings_bytes": 0,
+        "savings_label": "Est savings of 190 KiB",
+        "display_val": "Est savings of 190 KiB",
+        "description": "Reducing the download time of images can improve the perceived load time of the page and LCP."
+      },
+      {
+        "id": "max-potential-fid",
+        "title": "Max Potential First Input Delay",
+        "score": 0.06,
+        "savings_ms": 0,
+        "savings_bytes": 0,
+        "savings_label": "540 ms",
+        "display_val": "540 ms",
+        "description": "The maximum potential First Input Delay that your users could experience is the duration of the longest task."
       },
       {
         "id": "interactive",
@@ -438,88 +408,58 @@
         "score": 0.11,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "13.4 s",
-        "display_val": "13.4 s",
+        "savings_label": "13.6 s",
+        "display_val": "13.6 s",
         "description": "Time to Interactive is the amount of time it takes for the page to become fully interactive."
-      },
-      {
-        "id": "max-potential-fid",
-        "title": "Max Potential First Input Delay",
-        "score": 0.23,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "360 ms",
-        "display_val": "360 ms",
-        "description": "The maximum potential First Input Delay that your users could experience is the duration of the longest task."
       },
       {
         "id": "largest-contentful-paint",
         "title": "Largest Contentful Paint",
-        "score": 0.33,
+        "score": 0.11,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "4.7 s",
-        "display_val": "4.7 s",
+        "savings_label": "6.2 s",
+        "display_val": "6.2 s",
         "description": "Largest Contentful Paint marks the time at which the largest text or image is painted."
       },
       {
         "id": "total-blocking-time",
         "title": "Total Blocking Time",
-        "score": 0.36,
+        "score": 0.17,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "810 ms",
-        "display_val": "810 ms",
+        "savings_label": "1,330 ms",
+        "display_val": "1,330 ms",
         "description": "Sum of all time periods between FCP and Time to Interactive, when task length exceeded 50ms, expressed in milliseconds."
       }
     ]
   },
   "https://filux.com/es/focos-proyectores-led-174::desktop": {
-    "timestamp": "2026-10-15T13:03:56Z",
+    "timestamp": "2026-10-16T13:00:51Z",
     "label": "Catálogo - Focos Proyectores",
     "url": "https://filux.com/es/focos-proyectores-led-174",
     "strategy": "desktop",
-    "performance_score": 60,
+    "performance_score": 53,
     "opportunities": [
       {
         "id": "unused-javascript",
         "title": "Reduce unused JavaScript",
         "score": 0,
-        "savings_ms": 370,
-        "savings_bytes": 520192,
-        "savings_label": "370ms ahorro · 508 KB ahorro",
-        "display_val": "Est savings of 508 KiB",
+        "savings_ms": 460,
+        "savings_bytes": 517676,
+        "savings_label": "460ms ahorro · 505 KB ahorro",
+        "display_val": "Est savings of 506 KiB",
         "description": "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity."
       },
       {
         "id": "unused-css-rules",
         "title": "Reduce unused CSS",
         "score": 0,
-        "savings_ms": 80,
+        "savings_ms": 120,
         "savings_bytes": 112322,
-        "savings_label": "80ms ahorro · 109 KB ahorro",
+        "savings_label": "120ms ahorro · 109 KB ahorro",
         "display_val": "Est savings of 110 KiB",
         "description": "Reduce unused rules from stylesheets and defer CSS not used for above-the-fold content to decrease bytes consumed by network activity."
-      },
-      {
-        "id": "mainthread-work-breakdown",
-        "title": "Minimize main-thread work",
-        "score": 0,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "2.2 s",
-        "display_val": "2.2 s",
-        "description": "Consider reducing the time spent parsing, compiling and executing JS. You may find delivering smaller JS payloads helps with this."
-      },
-      {
-        "id": "bootup-time",
-        "title": "Reduce JavaScript execution time",
-        "score": 0,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "1.4 s",
-        "display_val": "1.4 s",
-        "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this."
       },
       {
         "id": "render-blocking-insight",
@@ -532,95 +472,6 @@
         "description": "Requests are blocking the page's initial render, which may delay LCP."
       },
       {
-        "id": "total-blocking-time",
-        "title": "Total Blocking Time",
-        "score": 0.23,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "570 ms",
-        "display_val": "570 ms",
-        "description": "Sum of all time periods between FCP and Time to Interactive, when task length exceeded 50ms, expressed in milliseconds."
-      },
-      {
-        "id": "largest-contentful-paint",
-        "title": "Largest Contentful Paint",
-        "score": 0.44,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "2.6 s",
-        "display_val": "2.6 s",
-        "description": "Largest Contentful Paint marks the time at which the largest text or image is painted."
-      },
-      {
-        "id": "max-potential-fid",
-        "title": "Max Potential First Input Delay",
-        "score": 0.45,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "260 ms",
-        "display_val": "260 ms",
-        "description": "The maximum potential First Input Delay that your users could experience is the duration of the longest task."
-      }
-    ]
-  },
-  "https://filux.com/es/tiras-led-outlet/-regulador-monocolor-con-mando-a-distancia-1732.html::mobile": {
-    "timestamp": "2026-10-15T13:03:56Z",
-    "label": "Ficha Producto - Regulador Tiras LED",
-    "url": "https://filux.com/es/tiras-led-outlet/-regulador-monocolor-con-mando-a-distancia-1732.html",
-    "strategy": "mobile",
-    "performance_score": 46,
-    "opportunities": [
-      {
-        "id": "unused-javascript",
-        "title": "Reduce unused JavaScript",
-        "score": 0,
-        "savings_ms": 1060,
-        "savings_bytes": 454698,
-        "savings_label": "1.06s ahorro · 444 KB ahorro",
-        "display_val": "Est savings of 444 KiB",
-        "description": "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity."
-      },
-      {
-        "id": "redirects",
-        "title": "Avoid multiple page redirects",
-        "score": 0,
-        "savings_ms": 753.6979780225714,
-        "savings_bytes": 0,
-        "savings_label": "753ms ahorro",
-        "display_val": "Est savings of 750 ms",
-        "description": "Redirects introduce additional delays before the page can be loaded."
-      },
-      {
-        "id": "unused-css-rules",
-        "title": "Reduce unused CSS",
-        "score": 0,
-        "savings_ms": 450,
-        "savings_bytes": 100634,
-        "savings_label": "450ms ahorro · 98 KB ahorro",
-        "display_val": "Est savings of 98 KiB",
-        "description": "Reduce unused rules from stylesheets and defer CSS not used for above-the-fold content to decrease bytes consumed by network activity."
-      },
-      {
-        "id": "render-blocking-insight",
-        "title": "Render-blocking requests",
-        "score": 0,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "Est savings of 1,180 ms",
-        "display_val": "Est savings of 1,180 ms",
-        "description": "Requests are blocking the page's initial render, which may delay LCP."
-      },
-      {
-        "id": "bootup-time",
-        "title": "Reduce JavaScript execution time",
-        "score": 0,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "1.6 s",
-        "display_val": "1.6 s",
-        "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this."
-      },
-      {
         "id": "mainthread-work-breakdown",
         "title": "Minimize main-thread work",
         "score": 0,
@@ -631,14 +482,103 @@
         "description": "Consider reducing the time spent parsing, compiling and executing JS. You may find delivering smaller JS payloads helps with this."
       },
       {
-        "id": "legacy-javascript-insight",
-        "title": "Legacy JavaScript",
+        "id": "bootup-time",
+        "title": "Reduce JavaScript execution time",
         "score": 0,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "Est savings of 32 KiB",
-        "display_val": "Est savings of 32 KiB",
-        "description": "Polyfills and transforms enable older browsers to use new JavaScript features. However, many aren't necessary for modern browsers. Consider modifying your JavaScript build process to not transpile"
+        "savings_label": "1.5 s",
+        "display_val": "1.5 s",
+        "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this."
+      },
+      {
+        "id": "total-blocking-time",
+        "title": "Total Blocking Time",
+        "score": 0.09,
+        "savings_ms": 0,
+        "savings_bytes": 0,
+        "savings_label": "820 ms",
+        "display_val": "820 ms",
+        "description": "Sum of all time periods between FCP and Time to Interactive, when task length exceeded 50ms, expressed in milliseconds."
+      },
+      {
+        "id": "largest-contentful-paint",
+        "title": "Largest Contentful Paint",
+        "score": 0.36,
+        "savings_ms": 0,
+        "savings_bytes": 0,
+        "savings_label": "2.9 s",
+        "display_val": "2.9 s",
+        "description": "Largest Contentful Paint marks the time at which the largest text or image is painted."
+      },
+      {
+        "id": "max-potential-fid",
+        "title": "Max Potential First Input Delay",
+        "score": 0.49,
+        "savings_ms": 0,
+        "savings_bytes": 0,
+        "savings_label": "250 ms",
+        "display_val": "250 ms",
+        "description": "The maximum potential First Input Delay that your users could experience is the duration of the longest task."
+      }
+    ]
+  },
+  "https://filux.com/es/tiras-led-outlet/-regulador-monocolor-con-mando-a-distancia-1732.html::mobile": {
+    "timestamp": "2026-10-16T13:00:51Z",
+    "label": "Ficha Producto - Regulador Tiras LED",
+    "url": "https://filux.com/es/tiras-led-outlet/-regulador-monocolor-con-mando-a-distancia-1732.html",
+    "strategy": "mobile",
+    "performance_score": 46,
+    "opportunities": [
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0,
+        "savings_ms": 1050,
+        "savings_bytes": 450998,
+        "savings_label": "1.05s ahorro · 440 KB ahorro",
+        "display_val": "Est savings of 440 KiB",
+        "description": "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity."
+      },
+      {
+        "id": "redirects",
+        "title": "Avoid multiple page redirects",
+        "score": 0,
+        "savings_ms": 754.1390333576926,
+        "savings_bytes": 0,
+        "savings_label": "754ms ahorro",
+        "display_val": "Est savings of 750 ms",
+        "description": "Redirects introduce additional delays before the page can be loaded."
+      },
+      {
+        "id": "unused-css-rules",
+        "title": "Reduce unused CSS",
+        "score": 0,
+        "savings_ms": 300,
+        "savings_bytes": 100638,
+        "savings_label": "300ms ahorro · 98 KB ahorro",
+        "display_val": "Est savings of 98 KiB",
+        "description": "Reduce unused rules from stylesheets and defer CSS not used for above-the-fold content to decrease bytes consumed by network activity."
+      },
+      {
+        "id": "document-latency-insight",
+        "title": "Document request latency",
+        "score": 0,
+        "savings_ms": 0,
+        "savings_bytes": 0,
+        "savings_label": "Est savings of 400 ms",
+        "display_val": "Est savings of 400 ms",
+        "description": "Your first network request is the most important."
+      },
+      {
+        "id": "mainthread-work-breakdown",
+        "title": "Minimize main-thread work",
+        "score": 0,
+        "savings_ms": 0,
+        "savings_bytes": 0,
+        "savings_label": "2.2 s",
+        "display_val": "2.2 s",
+        "description": "Consider reducing the time spent parsing, compiling and executing JS. You may find delivering smaller JS payloads helps with this."
       },
       {
         "id": "cache-insight",
@@ -651,23 +591,43 @@
         "description": "A long cache lifetime can speed up repeat visits to your page."
       },
       {
-        "id": "document-latency-insight",
-        "title": "Document request latency",
+        "id": "render-blocking-insight",
+        "title": "Render-blocking requests",
         "score": 0,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "Est savings of 350 ms",
-        "display_val": "Est savings of 350 ms",
-        "description": "Your first network request is the most important."
+        "savings_label": "Est savings of 1,180 ms",
+        "display_val": "Est savings of 1,180 ms",
+        "description": "Requests are blocking the page's initial render, which may delay LCP."
+      },
+      {
+        "id": "legacy-javascript-insight",
+        "title": "Legacy JavaScript",
+        "score": 0,
+        "savings_ms": 0,
+        "savings_bytes": 0,
+        "savings_label": "Est savings of 32 KiB",
+        "display_val": "Est savings of 32 KiB",
+        "description": "Polyfills and transforms enable older browsers to use new JavaScript features. However, many aren't necessary for modern browsers. Consider modifying your JavaScript build process to not transpile"
+      },
+      {
+        "id": "bootup-time",
+        "title": "Reduce JavaScript execution time",
+        "score": 0,
+        "savings_ms": 0,
+        "savings_bytes": 0,
+        "savings_label": "1.3 s",
+        "display_val": "1.3 s",
+        "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this."
       },
       {
         "id": "largest-contentful-paint",
         "title": "Largest Contentful Paint",
-        "score": 0.06,
+        "score": 0.02,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "7.0 s",
-        "display_val": "7.0 s",
+        "savings_label": "8.3 s",
+        "display_val": "8.3 s",
         "description": "Largest Contentful Paint marks the time at which the largest text or image is painted."
       },
       {
@@ -676,39 +636,29 @@
         "score": 0.19,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "11.3 s",
-        "display_val": "11.3 s",
+        "savings_label": "11.4 s",
+        "display_val": "11.4 s",
         "description": "Time to Interactive is the amount of time it takes for the page to become fully interactive."
-      },
-      {
-        "id": "max-potential-fid",
-        "title": "Max Potential First Input Delay",
-        "score": 0.3,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "330 ms",
-        "display_val": "330 ms",
-        "description": "The maximum potential First Input Delay that your users could experience is the duration of the longest task."
-      },
-      {
-        "id": "total-blocking-time",
-        "title": "Total Blocking Time",
-        "score": 0.35,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "830 ms",
-        "display_val": "830 ms",
-        "description": "Sum of all time periods between FCP and Time to Interactive, when task length exceeded 50ms, expressed in milliseconds."
       },
       {
         "id": "speed-index",
         "title": "Speed Index",
-        "score": 0.38,
+        "score": 0.44,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "6.6 s",
-        "display_val": "6.6 s",
+        "savings_label": "6.2 s",
+        "display_val": "6.2 s",
         "description": "Speed Index shows how quickly the contents of a page are visibly populated."
+      },
+      {
+        "id": "total-blocking-time",
+        "title": "Total Blocking Time",
+        "score": 0.44,
+        "savings_ms": 0,
+        "savings_bytes": 0,
+        "savings_label": "680 ms",
+        "display_val": "680 ms",
+        "description": "Sum of all time periods between FCP and Time to Interactive, when task length exceeded 50ms, expressed in milliseconds."
       },
       {
         "id": "first-contentful-paint",
@@ -723,19 +673,19 @@
     ]
   },
   "https://filux.com/es/tiras-led-outlet/-regulador-monocolor-con-mando-a-distancia-1732.html::desktop": {
-    "timestamp": "2026-10-15T13:03:56Z",
+    "timestamp": "2026-10-16T13:00:51Z",
     "label": "Ficha Producto - Regulador Tiras LED",
     "url": "https://filux.com/es/tiras-led-outlet/-regulador-monocolor-con-mando-a-distancia-1732.html",
     "strategy": "desktop",
-    "performance_score": 70,
+    "performance_score": 62,
     "opportunities": [
       {
         "id": "redirects",
         "title": "Avoid multiple page redirects",
         "score": 0,
-        "savings_ms": 203.69851989056232,
+        "savings_ms": 204.87499027322696,
         "savings_bytes": 0,
-        "savings_label": "203ms ahorro",
+        "savings_label": "204ms ahorro",
         "display_val": "Est savings of 200 ms",
         "description": "Redirects introduce additional delays before the page can be loaded."
       },
@@ -743,21 +693,41 @@
         "id": "unused-javascript",
         "title": "Reduce unused JavaScript",
         "score": 0,
-        "savings_ms": 160,
-        "savings_bytes": 453187,
-        "savings_label": "160ms ahorro · 442 KB ahorro",
-        "display_val": "Est savings of 443 KiB",
+        "savings_ms": 170,
+        "savings_bytes": 452091,
+        "savings_label": "170ms ahorro · 441 KB ahorro",
+        "display_val": "Est savings of 441 KiB",
         "description": "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity."
       },
       {
         "id": "unused-css-rules",
         "title": "Reduce unused CSS",
         "score": 0,
-        "savings_ms": 80,
-        "savings_bytes": 101310,
-        "savings_label": "80ms ahorro · 98 KB ahorro",
-        "display_val": "Est savings of 99 KiB",
+        "savings_ms": 40,
+        "savings_bytes": 100639,
+        "savings_label": "40ms ahorro · 98 KB ahorro",
+        "display_val": "Est savings of 98 KiB",
         "description": "Reduce unused rules from stylesheets and defer CSS not used for above-the-fold content to decrease bytes consumed by network activity."
+      },
+      {
+        "id": "bootup-time",
+        "title": "Reduce JavaScript execution time",
+        "score": 0,
+        "savings_ms": 0,
+        "savings_bytes": 0,
+        "savings_label": "1.7 s",
+        "display_val": "1.7 s",
+        "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this."
+      },
+      {
+        "id": "mainthread-work-breakdown",
+        "title": "Minimize main-thread work",
+        "score": 0,
+        "savings_ms": 0,
+        "savings_bytes": 0,
+        "savings_label": "2.5 s",
+        "display_val": "2.5 s",
+        "description": "Consider reducing the time spent parsing, compiling and executing JS. You may find delivering smaller JS payloads helps with this."
       },
       {
         "id": "document-latency-insight",
@@ -765,9 +735,19 @@
         "score": 0,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "Est savings of 370 ms",
-        "display_val": "Est savings of 370 ms",
+        "savings_label": "Est savings of 410 ms",
+        "display_val": "Est savings of 410 ms",
         "description": "Your first network request is the most important."
+      },
+      {
+        "id": "cache-insight",
+        "title": "Use efficient cache lifetimes",
+        "score": 0,
+        "savings_ms": 0,
+        "savings_bytes": 0,
+        "savings_label": "Est savings of 214 KiB",
+        "display_val": "Est savings of 214 KiB",
+        "description": "A long cache lifetime can speed up repeat visits to your page."
       },
       {
         "id": "legacy-javascript-insight",
@@ -785,47 +765,57 @@
         "score": 0,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "Est savings of 260 ms",
-        "display_val": "Est savings of 260 ms",
+        "savings_label": "Est savings of 240 ms",
+        "display_val": "Est savings of 240 ms",
         "description": "Requests are blocking the page's initial render, which may delay LCP."
       },
       {
         "id": "total-blocking-time",
         "title": "Total Blocking Time",
-        "score": 0.26,
+        "score": 0.12,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "530 ms",
-        "display_val": "530 ms",
+        "savings_label": "760 ms",
+        "display_val": "760 ms",
         "description": "Sum of all time periods between FCP and Time to Interactive, when task length exceeded 50ms, expressed in milliseconds."
       },
       {
         "id": "max-potential-fid",
         "title": "Max Potential First Input Delay",
-        "score": 0.45,
+        "score": 0.3,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "260 ms",
-        "display_val": "260 ms",
+        "savings_label": "320 ms",
+        "display_val": "320 ms",
         "description": "The maximum potential First Input Delay that your users could experience is the duration of the longest task."
+      },
+      {
+        "id": "speed-index",
+        "title": "Speed Index",
+        "score": 0.42,
+        "savings_ms": 0,
+        "savings_bytes": 0,
+        "savings_label": "2.5 s",
+        "display_val": "2.5 s",
+        "description": "Speed Index shows how quickly the contents of a page are visibly populated."
       }
     ]
   },
   "https://filux.com/es/mas-vendidos::mobile": {
-    "timestamp": "2026-10-15T13:03:56Z",
+    "timestamp": "2026-10-16T13:00:51Z",
     "label": "Sección - Más Vendidos",
     "url": "https://filux.com/es/mas-vendidos",
     "strategy": "mobile",
-    "performance_score": 50,
+    "performance_score": 57,
     "opportunities": [
       {
         "id": "unused-javascript",
         "title": "Reduce unused JavaScript",
         "score": 0,
-        "savings_ms": 1800,
-        "savings_bytes": 470070,
-        "savings_label": "1.80s ahorro · 459 KB ahorro",
-        "display_val": "Est savings of 459 KiB",
+        "savings_ms": 1200,
+        "savings_bytes": 468979,
+        "savings_label": "1.20s ahorro · 457 KB ahorro",
+        "display_val": "Est savings of 458 KiB",
         "description": "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity."
       },
       {
@@ -833,20 +823,10 @@
         "title": "Reduce unused CSS",
         "score": 0,
         "savings_ms": 450,
-        "savings_bytes": 102739,
-        "savings_label": "450ms ahorro · 100 KB ahorro",
+        "savings_bytes": 102075,
+        "savings_label": "450ms ahorro · 99 KB ahorro",
         "display_val": "Est savings of 100 KiB",
         "description": "Reduce unused rules from stylesheets and defer CSS not used for above-the-fold content to decrease bytes consumed by network activity."
-      },
-      {
-        "id": "bootup-time",
-        "title": "Reduce JavaScript execution time",
-        "score": 0,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "1.4 s",
-        "display_val": "1.4 s",
-        "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this."
       },
       {
         "id": "largest-contentful-paint",
@@ -869,69 +849,29 @@
         "description": "A long cache lifetime can speed up repeat visits to your page."
       },
       {
-        "id": "legacy-javascript-insight",
-        "title": "Legacy JavaScript",
-        "score": 0,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "Est savings of 32 KiB",
-        "display_val": "Est savings of 32 KiB",
-        "description": "Polyfills and transforms enable older browsers to use new JavaScript features. However, many aren't necessary for modern browsers. Consider modifying your JavaScript build process to not transpile"
-      },
-      {
-        "id": "mainthread-work-breakdown",
-        "title": "Minimize main-thread work",
-        "score": 0,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "2.1 s",
-        "display_val": "2.1 s",
-        "description": "Consider reducing the time spent parsing, compiling and executing JS. You may find delivering smaller JS payloads helps with this."
-      },
-      {
         "id": "render-blocking-insight",
         "title": "Render-blocking requests",
         "score": 0,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "Est savings of 1,020 ms",
-        "display_val": "Est savings of 1,020 ms",
+        "savings_label": "Est savings of 1,210 ms",
+        "display_val": "Est savings of 1,210 ms",
         "description": "Requests are blocking the page's initial render, which may delay LCP."
       },
       {
         "id": "interactive",
         "title": "Time to Interactive",
-        "score": 0.15,
+        "score": 0.17,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "12.3 s",
-        "display_val": "12.3 s",
+        "savings_label": "11.7 s",
+        "display_val": "11.7 s",
         "description": "Time to Interactive is the amount of time it takes for the page to become fully interactive."
-      },
-      {
-        "id": "max-potential-fid",
-        "title": "Max Potential First Input Delay",
-        "score": 0.39,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "290 ms",
-        "display_val": "290 ms",
-        "description": "The maximum potential First Input Delay that your users could experience is the duration of the longest task."
-      },
-      {
-        "id": "total-blocking-time",
-        "title": "Total Blocking Time",
-        "score": 0.44,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "670 ms",
-        "display_val": "670 ms",
-        "description": "Sum of all time periods between FCP and Time to Interactive, when task length exceeded 50ms, expressed in milliseconds."
       }
     ]
   },
   "https://filux.com/es/mas-vendidos::desktop": {
-    "timestamp": "2026-10-15T13:03:56Z",
+    "timestamp": "2026-10-16T13:00:51Z",
     "label": "Sección - Más Vendidos",
     "url": "https://filux.com/es/mas-vendidos",
     "strategy": "desktop",
@@ -942,20 +882,30 @@
         "title": "Reduce unused JavaScript",
         "score": 0,
         "savings_ms": 360,
-        "savings_bytes": 470369,
-        "savings_label": "360ms ahorro · 459 KB ahorro",
-        "display_val": "Est savings of 459 KiB",
+        "savings_bytes": 467935,
+        "savings_label": "360ms ahorro · 456 KB ahorro",
+        "display_val": "Est savings of 457 KiB",
         "description": "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity."
       },
       {
         "id": "unused-css-rules",
         "title": "Reduce unused CSS",
         "score": 0,
-        "savings_ms": 70,
-        "savings_bytes": 102681,
-        "savings_label": "70ms ahorro · 100 KB ahorro",
+        "savings_ms": 90,
+        "savings_bytes": 102003,
+        "savings_label": "90ms ahorro · 99 KB ahorro",
         "display_val": "Est savings of 100 KiB",
         "description": "Reduce unused rules from stylesheets and defer CSS not used for above-the-fold content to decrease bytes consumed by network activity."
+      },
+      {
+        "id": "image-delivery-insight",
+        "title": "Improve image delivery",
+        "score": 0,
+        "savings_ms": 0,
+        "savings_bytes": 0,
+        "savings_label": "Est savings of 12 KiB",
+        "display_val": "Est savings of 12 KiB",
+        "description": "Reducing the download time of images can improve the perceived load time of the page and LCP."
       },
       {
         "id": "render-blocking-insight",
@@ -980,51 +930,71 @@
       {
         "id": "total-blocking-time",
         "title": "Total Blocking Time",
-        "score": 0.22,
+        "score": 0.27,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "580 ms",
-        "display_val": "580 ms",
+        "savings_label": "520 ms",
+        "display_val": "520 ms",
         "description": "Sum of all time periods between FCP and Time to Interactive, when task length exceeded 50ms, expressed in milliseconds."
       },
       {
         "id": "largest-contentful-paint",
         "title": "Largest Contentful Paint",
-        "score": 0.43,
+        "score": 0.39,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "2.6 s",
-        "display_val": "2.6 s",
+        "savings_label": "2.8 s",
+        "display_val": "2.8 s",
         "description": "Largest Contentful Paint marks the time at which the largest text or image is painted."
       }
     ]
   },
   "https://filux.com/es/contactenos::mobile": {
-    "timestamp": "2026-10-15T13:03:56Z",
+    "timestamp": "2026-10-16T13:00:51Z",
     "label": "Contacto",
     "url": "https://filux.com/es/contactenos",
     "strategy": "mobile",
-    "performance_score": 56,
+    "performance_score": 40,
     "opportunities": [
       {
         "id": "unused-javascript",
         "title": "Reduce unused JavaScript",
         "score": 0,
-        "savings_ms": 4350,
-        "savings_bytes": 832179,
-        "savings_label": "4.35s ahorro · 812 KB ahorro",
-        "display_val": "Est savings of 813 KiB",
+        "savings_ms": 3960,
+        "savings_bytes": 835890,
+        "savings_label": "3.96s ahorro · 816 KB ahorro",
+        "display_val": "Est savings of 816 KiB",
         "description": "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity."
       },
       {
         "id": "unused-css-rules",
         "title": "Reduce unused CSS",
         "score": 0,
-        "savings_ms": 750,
-        "savings_bytes": 118751,
-        "savings_label": "750ms ahorro · 115 KB ahorro",
+        "savings_ms": 600,
+        "savings_bytes": 118746,
+        "savings_label": "600ms ahorro · 115 KB ahorro",
         "display_val": "Est savings of 116 KiB",
         "description": "Reduce unused rules from stylesheets and defer CSS not used for above-the-fold content to decrease bytes consumed by network activity."
+      },
+      {
+        "id": "bootup-time",
+        "title": "Reduce JavaScript execution time",
+        "score": 0,
+        "savings_ms": 0,
+        "savings_bytes": 0,
+        "savings_label": "2.1 s",
+        "display_val": "2.1 s",
+        "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this."
+      },
+      {
+        "id": "mainthread-work-breakdown",
+        "title": "Minimize main-thread work",
+        "score": 0,
+        "savings_ms": 0,
+        "savings_bytes": 0,
+        "savings_label": "2.9 s",
+        "display_val": "2.9 s",
+        "description": "Consider reducing the time spent parsing, compiling and executing JS. You may find delivering smaller JS payloads helps with this."
       },
       {
         "id": "cache-insight",
@@ -1042,8 +1012,8 @@
         "score": 0,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "Est savings of 1,040 ms",
-        "display_val": "Est savings of 1,040 ms",
+        "savings_label": "Est savings of 1,050 ms",
+        "display_val": "Est savings of 1,050 ms",
         "description": "Requests are blocking the page's initial render, which may delay LCP."
       },
       {
@@ -1052,68 +1022,78 @@
         "score": 0,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "15.1 s",
-        "display_val": "15.1 s",
+        "savings_label": "14.4 s",
+        "display_val": "14.4 s",
         "description": "Largest Contentful Paint marks the time at which the largest text or image is painted."
-      },
-      {
-        "id": "legacy-javascript-insight",
-        "title": "Legacy JavaScript",
-        "score": 0,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "Est savings of 33 KiB",
-        "display_val": "Est savings of 33 KiB",
-        "description": "Polyfills and transforms enable older browsers to use new JavaScript features. However, many aren't necessary for modern browsers. Consider modifying your JavaScript build process to not transpile"
       },
       {
         "id": "interactive",
         "title": "Time to Interactive",
-        "score": 0.07,
+        "score": 0.09,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "15.3 s",
-        "display_val": "15.3 s",
+        "savings_label": "14.5 s",
+        "display_val": "14.5 s",
         "description": "Time to Interactive is the amount of time it takes for the page to become fully interactive."
+      },
+      {
+        "id": "total-blocking-time",
+        "title": "Total Blocking Time",
+        "score": 0.15,
+        "savings_ms": 0,
+        "savings_bytes": 0,
+        "savings_label": "1,440 ms",
+        "display_val": "1,440 ms",
+        "description": "Sum of all time periods between FCP and Time to Interactive, when task length exceeded 50ms, expressed in milliseconds."
+      },
+      {
+        "id": "max-potential-fid",
+        "title": "Max Potential First Input Delay",
+        "score": 0.27,
+        "savings_ms": 0,
+        "savings_bytes": 0,
+        "savings_label": "340 ms",
+        "display_val": "340 ms",
+        "description": "The maximum potential First Input Delay that your users could experience is the duration of the longest task."
+      },
+      {
+        "id": "speed-index",
+        "title": "Speed Index",
+        "score": 0.43,
+        "savings_ms": 0,
+        "savings_bytes": 0,
+        "savings_label": "6.2 s",
+        "display_val": "6.2 s",
+        "description": "Speed Index shows how quickly the contents of a page are visibly populated."
       }
     ]
   },
   "https://filux.com/es/contactenos::desktop": {
-    "timestamp": "2026-10-15T13:03:56Z",
+    "timestamp": "2026-10-16T13:00:51Z",
     "label": "Contacto",
     "url": "https://filux.com/es/contactenos",
     "strategy": "desktop",
-    "performance_score": 52,
+    "performance_score": 70,
     "opportunities": [
       {
         "id": "unused-javascript",
         "title": "Reduce unused JavaScript",
         "score": 0,
-        "savings_ms": 810,
-        "savings_bytes": 836195,
-        "savings_label": "810ms ahorro · 816 KB ahorro",
-        "display_val": "Est savings of 817 KiB",
+        "savings_ms": 680,
+        "savings_bytes": 831015,
+        "savings_label": "680ms ahorro · 811 KB ahorro",
+        "display_val": "Est savings of 812 KiB",
         "description": "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity."
       },
       {
         "id": "unused-css-rules",
         "title": "Reduce unused CSS",
         "score": 0,
-        "savings_ms": 130,
-        "savings_bytes": 118825,
-        "savings_label": "130ms ahorro · 116 KB ahorro",
+        "savings_ms": 120,
+        "savings_bytes": 118837,
+        "savings_label": "120ms ahorro · 116 KB ahorro",
         "display_val": "Est savings of 116 KiB",
         "description": "Reduce unused rules from stylesheets and defer CSS not used for above-the-fold content to decrease bytes consumed by network activity."
-      },
-      {
-        "id": "legacy-javascript-insight",
-        "title": "Legacy JavaScript",
-        "score": 0,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "Est savings of 33 KiB",
-        "display_val": "Est savings of 33 KiB",
-        "description": "Polyfills and transforms enable older browsers to use new JavaScript features. However, many aren't necessary for modern browsers. Consider modifying your JavaScript build process to not transpile"
       },
       {
         "id": "render-blocking-insight",
@@ -1121,19 +1101,9 @@
         "score": 0,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "Est savings of 280 ms",
-        "display_val": "Est savings of 280 ms",
+        "savings_label": "Est savings of 300 ms",
+        "display_val": "Est savings of 300 ms",
         "description": "Requests are blocking the page's initial render, which may delay LCP."
-      },
-      {
-        "id": "mainthread-work-breakdown",
-        "title": "Minimize main-thread work",
-        "score": 0,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "2.1 s",
-        "display_val": "2.1 s",
-        "description": "Consider reducing the time spent parsing, compiling and executing JS. You may find delivering smaller JS payloads helps with this."
       },
       {
         "id": "cache-insight",
@@ -1146,33 +1116,13 @@
         "description": "A long cache lifetime can speed up repeat visits to your page."
       },
       {
-        "id": "bootup-time",
-        "title": "Reduce JavaScript execution time",
-        "score": 0,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "1.4 s",
-        "display_val": "1.4 s",
-        "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this."
-      },
-      {
-        "id": "total-blocking-time",
-        "title": "Total Blocking Time",
-        "score": 0.08,
-        "savings_ms": 0,
-        "savings_bytes": 0,
-        "savings_label": "860 ms",
-        "display_val": "860 ms",
-        "description": "Sum of all time periods between FCP and Time to Interactive, when task length exceeded 50ms, expressed in milliseconds."
-      },
-      {
         "id": "largest-contentful-paint",
         "title": "Largest Contentful Paint",
-        "score": 0.28,
+        "score": 0.35,
         "savings_ms": 0,
         "savings_bytes": 0,
-        "savings_label": "3.2 s",
-        "display_val": "3.2 s",
+        "savings_label": "3.0 s",
+        "display_val": "3.0 s",
         "description": "Largest Contentful Paint marks the time at which the largest text or image is painted."
       }
     ]
